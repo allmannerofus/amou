@@ -1,0 +1,505 @@
+@import 'tailwindcss';
+
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
+}
+
+:root {
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-string: #007f7a;
+  --sh-keyword: #e02518;
+  --sh-comment: #a19595;
+  --sh-jsxliterals: #6266d1;
+  --sh-property: #e25a1c;
+  --sh-entity: #e25a1c;
+  --logo-color: #000000;
+  
+  /* Brand Colors */
+  --off-white: #FEFCF4;
+  --off-black: #0E0F12;
+  --light-digital-blue: #A4A4F1;
+  --digital-blue-primary: #9191C9;
+  --dark-digital-blue: #21232B;
+  --secondary-1: #E25A1C;
+  --secondary-2: #F4B942;
+  --secondary-3: #2E7D32;
+  --secondary-4: #47A3F3;
+  --alt-1: #E91E63;
+  
+  /* Light Mode Colors */
+  --background: #FEFCF4;
+  --raised: #E0D9C3;
+  --raised-tertiary: #9B9581;
+  --text: #0E0F12;
+  --text-secondary: #4A5568;
+  --text-tertiary: #718096;
+  --primary: #5959E3;
+  --link: #5959E3;
+  --danger: #E25A1C;
+  --warning: #F4B942;
+  --success: #2E7D32;
+  
+  /* Signature filter for light mode */
+  --signature-filter: brightness(0) saturate(100%) invert(27%) sepia(8%) saturate(1234%) hue-rotate(202deg) brightness(94%) contrast(86%);
+}
+
+.dark {
+  --sh-class: #4c97f8;
+  --sh-identifier: white;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
+  --logo-color: #ffffff;
+  
+  /* Dark Mode Colors */
+  --background: #0E0F12;
+  --raised: #2A2D36;
+  --raised-tertiary: #1A1D26;
+  --text: #FEFCF4;
+  --text-secondary: #E0D9C3;
+  --text-tertiary: #9B9581;
+  --primary: #A4A4F1;
+  --link: #A4A4F1;
+  --danger: #E25A1C;
+  --warning: #F4B942;
+  --success: #2E7D32;
+  
+  /* Signature filter for dark mode */
+  --signature-filter: brightness(0) saturate(100%) invert(89%) sepia(6%) saturate(1014%) hue-rotate(359deg) brightness(96%) contrast(94%);
+}
+
+html {
+  min-width: 360px;
+  font-family: var(--font-faktum-regular), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--background);
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: var(--font-faktum-regular), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Gradient Animation Keyframes */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient-flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Animated Gradient Bar */
+.gradient-bar {
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+.gradient-bar-inverted {
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  animation: gradient-shift 8s ease-in-out infinite reverse;
+}
+
+/* Faktum font utility classes */
+.font-faktum {
+  font-family: var(--font-faktum-regular), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.font-faktum-light {
+  font-family: var(--font-faktum-light), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.font-faktum-medium {
+  font-family: var(--font-faktum-medium), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.font-faktum-semibold {
+  font-family: var(--font-faktum-semibold), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.font-faktum-bold {
+  font-family: var(--font-faktum-bold), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.font-faktum-extrabold {
+  font-family: var(--font-faktum-extrabold), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* DM Mono font utility classes */
+.font-dm-mono {
+  font-family: var(--font-dm-mono), 'Courier New', Courier, monospace;
+}
+
+.font-dm-mono-light {
+  font-family: var(--font-dm-mono), 'Courier New', Courier, monospace;
+  font-weight: 300;
+}
+
+.font-dm-mono-regular {
+  font-family: var(--font-dm-mono), 'Courier New', Courier, monospace;
+  font-weight: 400;
+}
+
+.font-dm-mono-medium {
+  font-family: var(--font-dm-mono), 'Courier New', Courier, monospace;
+  font-weight: 500;
+}
+
+/* Newsreader font utility classes - Display variant */
+.font-newsreader {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-display: swap;
+}
+
+.font-newsreader-extralight {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 200;
+  font-display: swap;
+}
+
+.font-newsreader-light {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 300;
+  font-display: swap;
+}
+
+.font-newsreader-regular {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.font-newsreader-medium {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 500;
+  font-display: swap;
+}
+
+.font-newsreader-semibold {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 600;
+  font-display: swap;
+}
+
+.font-newsreader-bold {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 700;
+  font-display: swap;
+}
+
+.font-newsreader-extrabold {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 800;
+  font-display: swap;
+}
+
+.prose .anchor {
+  @apply absolute invisible no-underline;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible;
+}
+
+.prose a {
+  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+}
+
+.prose .anchor:after {
+  @apply text-neutral-300 dark:text-neutral-700;
+  content: '#';
+}
+
+.prose pre {
+  @apply bg-neutral-900 dark:bg-neutral-900;
+}
+
+.prose code {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+.prose pre code {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+.prose code span {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+.prose img {
+  @apply rounded-lg border border-neutral-200 dark:border-neutral-700;
+}
+
+.prose p {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+.prose h1 {
+  @apply text-neutral-900 dark:text-neutral-100;
+}
+
+.prose h2 {
+  @apply text-neutral-900 dark:text-neutral-100;
+}
+
+.prose h3 {
+  @apply text-neutral-900 dark:text-neutral-100;
+}
+
+.prose h4 {
+  @apply text-neutral-900 dark:text-neutral-100;
+}
+
+.prose strong {
+  @apply text-neutral-900 dark:text-neutral-100;
+}
+
+.prose ul {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+.prose ol {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+.prose > :first-child {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='url'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='week'],
+input[type='time'],
+input[type='search'],
+input[type='tel'],
+select,
+select[multiple],
+textarea {
+  @apply bg-neutral-50 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 text-neutral-900 dark:text-neutral-100;
+}
+
+table {
+  @apply border-neutral-200 dark:border-neutral-700;
+}
+
+.title {
+  @apply text-neutral-900 dark:text-neutral-100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-neutral-900 dark:text-neutral-100;
+  font-weight: 500;
+  font-family: var(--font-faktum-medium), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1 {
+  @apply text-neutral-900 dark:text-neutral-100;
+  font-weight: 500;
+  font-family: var(--font-faktum-medium), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+h2 {
+  @apply text-neutral-900 dark:text-neutral-100;
+  font-weight: 500;
+  font-family: var(--font-faktum-medium), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+h3 {
+  @apply text-neutral-900 dark:text-neutral-100;
+  font-weight: 400;
+  font-family: var(--font-faktum-medium), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+p {
+  @apply text-neutral-800 dark:text-neutral-200;
+  font-family: var(--font-faktum-regular), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+section {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+hr {
+  display: none;
+}
+
+ul, ol {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+li {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+.expertise-grid {
+  @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2;
+}
+
+.expertise-item {
+  @apply px-0 py-1 text-sm font-medium transition-colors text-left;
+  font-family: var(--font-faktum-medium), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  min-width: 0;
+  color: var(--text-secondary);
+}
+
+/* Portfolio Carousel Animations */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(-33.33%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navigation links - no underline by default, but allow hover underlines */
+nav a {
+  text-decoration: none !important;
+}
+
+nav a:hover {
+  text-decoration: underline !important;
+}
+
+/* Full-width content blade styles - more powerful */
+.content-blade {
+  width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  z-index: 1 !important;
+}
+
+.content-blade-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Force any div with #333333 background to be full-width */
+div[style*="background-color: #333333"] {
+  width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  z-index: 1 !important;
+}
+
+/* Weather widget styles */
+.weather-widget {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.weather-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  filter: var(--weather-icon-filter);
+}
+
+/* Dark mode weather icon filter */
+.dark .weather-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Memo text styling */
+.memo-text {
+  color: var(--text); /* Off-black in light mode */
+}
+
+.dark .memo-text {
+  color: var(--text-secondary); /* Secondary color in dark mode */
+}
+
+
