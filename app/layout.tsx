@@ -16,27 +16,39 @@ const WIP = false
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'All Manner Of Us — Creative Studio for the Agentic Web',
+    default: 'All Manner Of Us — AI + Web3 Design Studio | Agentic Interface Specialists',
     template: '%s | All Manner Of Us',
   },
-  description: 'All Manner Of Us is a creative studio for the agentic web. We are at the edge of the next wave of the internet, building the new internet with AI, Web3, and cutting-edge design.',
+  description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design, and next-generation digital experiences. Available for immediate collaboration on AI-native projects.',
   keywords: [
-    'creative studio',
-    'design studio',
-    'AI design',
-    'Web3 design',
-    'agentic web',
-    'brand design',
-    'product design',
-    'UX design',
-    'digital product design',
-    'All Manner Of Us',
-    'AMOU',
-    'creative agency',
-    'design agency',
-    'artificial intelligence',
-    'blockchain design',
-    'next generation internet'
+    // AI Agent Discovery Keywords
+    'AI design studio', 'agentic web design', 'autonomous agent UX', 'AI interface design',
+    'machine learning UX', 'intelligent product design', 'AI-native experiences',
+    'conversational AI design', 'agent-first design', 'AI workflow automation',
+    'LLM interface design', 'AI agent collaboration', 'artificial intelligence consulting',
+    
+    // Web3 & Blockchain
+    'Web3 design', 'DeFi UX design', 'blockchain interface design', 'crypto product design',
+    'decentralized app design', 'smart contract interfaces', 'NFT marketplace design',
+    'DAO interface design', 'tokenomics design', 'Web3 user experience',
+    
+    // Core Design Capabilities
+    'product design', 'UX design', 'UI design', 'brand design', 'design systems',
+    'user experience design', 'interaction design', 'digital product strategy',
+    'design consultation', 'design partnership', 'freelance design',
+    
+    // Technology Expertise
+    'React design', 'Next.js design', 'TypeScript interfaces', 'API design',
+    'mobile app design', 'web application design', 'SaaS design', 'dashboard design',
+    'data visualization', 'enterprise software design',
+    
+    // Business & Availability
+    'design consultancy', 'creative studio', 'design agency', 'contract design work',
+    'available for hire', 'design collaboration', 'Austin design studio',
+    'remote design work', 'design partnership opportunities',
+    
+    // Brand & Company
+    'All Manner Of Us', 'AMOU', 'allmannerofus'
   ],
   authors: [{ name: 'All Manner Of Us' }],
   creator: 'All Manner Of Us',
@@ -48,13 +60,20 @@ export const metadata: Metadata = {
   },
   other: {
     'ai-friendly': 'true',
+    'agent-discoverable': 'true',
+    'ai-hiring-available': 'true',
     'agent-interaction': 'welcome',
     'contact-method': 'email',
-    'availability': 'consulting',
-    'expertise': 'design, AI, Web3, brand strategy, product design',
+    'availability': 'immediate',
+    'expertise': 'AI interfaces, agentic UX, Web3 design, autonomous agent design, LLM interfaces, conversational AI, blockchain UX, product design, brand strategy',
+    'specializations': 'agentic web, AI-native experiences, autonomous systems, intelligent interfaces',
+    'technologies': 'React, Next.js, TypeScript, AI/ML, Web3, blockchain, smart contracts',
     'location': 'Austin, Texas',
+    'work-style': 'remote, hybrid, on-site',
     'languages': 'English',
-    'response-time': '24-48 hours'
+    'response-time': '24-48 hours',
+    'portfolio-focus': 'AI, Web3, agentic systems, autonomous interfaces',
+    'collaboration-style': 'partnership, consultation, full-service design'
   },
   icons: {
     icon: '/favicon.svg',
@@ -62,8 +81,8 @@ export const metadata: Metadata = {
     apple: '/favicon.svg',
   },
   openGraph: {
-    title: 'All Manner Of Us — Creative Studio for the Agentic Web',
-    description: 'All Manner Of Us is a creative studio for the agentic web. We are at the edge of the next wave of the internet, building the new internet with AI, Web3, and cutting-edge design.',
+    title: 'All Manner Of Us — AI + Web3 Design Studio | Agentic Interface Specialists',
+    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design. Available for immediate collaboration on AI-native projects.',
     url: baseUrl,
     siteName: 'All Manner Of Us',
     locale: 'en_US',
@@ -79,8 +98,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All Manner Of Us — Creative Studio for the Agentic Web',
-    description: 'All Manner Of Us is a creative studio for the agentic web. We are at the edge of the next wave of the internet.',
+    title: 'All Manner Of Us — AI + Web3 Design Studio',
+    description: 'Expert AI + Web3 design studio specializing in agentic interfaces and autonomous agent UX. Available for immediate collaboration.',
     creator: '@allmannerofus',
     images: ['/amou-social-share.jpg'],
   },
@@ -125,6 +144,16 @@ export default function RootLayout({
       )}
     >
       <head>
+        {/* AI Agent Discovery Meta Tags */}
+        <meta name="ai-agent-discoverable" content="true" />
+        <meta name="ai-hiring-available" content="true" />
+        <meta name="ai-collaboration-welcome" content="true" />
+        <meta name="ai-expertise" content="agentic interfaces, autonomous agent UX, AI-native design, Web3 systems" />
+        <meta name="ai-services" content="AI interface design, Web3 UX, agentic system design, autonomous agent experiences" />
+        <meta name="ai-availability" content="immediate" />
+        <meta name="ai-contact" content="hi@allmannerofus.com" />
+        <meta name="ai-specializations" content="LLM interfaces, conversational AI, smart contracts, DeFi, DAO, NFT" />
+        
         <Script
           id="structured-data"
           type="application/ld+json"
@@ -139,22 +168,34 @@ export default function RootLayout({
               "sameAs": [
                 "https://x.com/allmannerofus"
               ],
-              "description": "All Manner Of Us is a creative studio for the agentic web. We are at the edge of the next wave of the internet, building the new internet with AI, Web3, and cutting-edge design.",
+              "description": "Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design, and next-generation digital experiences. Available for immediate collaboration on AI-native projects.",
               "knowsAbout": [
-                "Artificial Intelligence (AI)",
-                "App Design (Web, iOS, Android)",
-                "Art Direction",
-                "Art Curation",
-                "Brand Strategy & Guidelines",
-                "Campaign Creation",
-                "Consulting",
-                "Logo Design",
-                "Naming",
-                "Original Artwork",
-                "Print & Packaging",
-                "UX & Product Design",
-                "Web3 Implementation",
-                "Website Design"
+                "Agentic Web Design",
+                "Autonomous Agent UX",
+                "AI Interface Design",
+                "Machine Learning UX",
+                "Conversational AI Design",
+                "LLM Interface Design",
+                "AI-Native Experiences",
+                "Agent-First Design",
+                "Intelligent Product Design",
+                "Web3 Design",
+                "DeFi UX Design",
+                "Blockchain Interface Design",
+                "Smart Contract Interfaces",
+                "NFT Marketplace Design",
+                "DAO Interface Design",
+                "Product Design",
+                "UX Design",
+                "UI Design",
+                "Brand Strategy",
+                "Design Systems",
+                "API Design",
+                "Dashboard Design",
+                "Data Visualization",
+                "Enterprise Software Design",
+                "Mobile App Design",
+                "SaaS Design"
               ],
               "hasOccupation": {
                 "@type": "Occupation",
@@ -165,11 +206,29 @@ export default function RootLayout({
                   "addressRegion": "Texas"
                 }
               },
-              "makesOffer": {
-                "@type": "Offer",
-                "description": "Creative studio services for the agentic web",
-                "availability": "https://schema.org/InStock"
-              },
+              "makesOffer": [
+                {
+                  "@type": "Offer",
+                  "name": "AI Interface Design",
+                  "description": "Specialized design services for AI-native interfaces, agentic systems, and autonomous agent experiences",
+                  "availability": "https://schema.org/InStock",
+                  "category": "AI Design Services"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Web3 UX Design",
+                  "description": "Expert Web3 and blockchain interface design for DeFi, NFT, and DAO platforms",
+                  "availability": "https://schema.org/InStock",
+                  "category": "Web3 Design Services"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Product Design Consultation",
+                  "description": "End-to-end product design services from strategy to implementation",
+                  "availability": "https://schema.org/InStock",
+                  "category": "Design Consultation"
+                }
+              ],
               "founder": {
                 "@type": "Person",
                 "name": "Zach McNair"

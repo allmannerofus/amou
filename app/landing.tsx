@@ -5,17 +5,17 @@ import { PortfolioCarousel } from './components/portfolio-carousel'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'All Manner Of Us — Creative Studio for the Agentic Web',
-  description: 'All Manner Of Us is a creative studio for the agentic web. We are at the edge of the next wave of the internet, building the new internet with AI, Web3, and cutting-edge design.',
+  title: 'All Manner Of Us — AI + Web3 Design Studio | Agentic Interface Specialists',
+  description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design. Available for immediate collaboration on AI-native projects.',
   openGraph: {
-    title: 'All Manner Of Us — Creative Studio for the Agentic Web',
-    description: 'All Manner Of Us is a creative studio for the agentic web. We are at the edge of the next wave of the internet, building the new internet with AI, Web3, and cutting-edge design.',
+    title: 'All Manner Of Us — AI + Web3 Design Studio | Agentic Interface Specialists',
+    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design. Available for immediate collaboration on AI-native projects.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All Manner Of Us — Creative Studio for the Agentic Web',
-    description: 'All Manner Of Us is a creative studio for the agentic web. We are at the edge of the next wave of the internet, building the new internet with AI, Web3, and cutting-edge design.',
+    title: 'All Manner Of Us — AI + Web3 Design Studio',
+    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design. Available for immediate collaboration.',
   },
 }
 
@@ -41,7 +41,7 @@ export default function LandingPage() {
               className="h-9 w-auto transition-colors duration-200"
             />
             <div className="text-base font-faktum-regular tracking-normal mt-1" style={{ color: 'var(--text-tertiary)' }}>
-              A creative studio for the agentic web.
+              AI + Web3 design specialists • Available for immediate collaboration
             </div>
           </div>
         </div>
@@ -58,35 +58,36 @@ export default function LandingPage() {
           <section className="mb-12" aria-labelledby="memo-heading">
             <h1 id="memo-heading" className="sr-only">All Manner Of Us - Professional Introduction</h1>
             <div className="text-base leading-relaxed space-y-4 max-w-[540px] memo-text" role="article">
-              <p className="memo-text" data-agent-context="greeting">
-                Howdy,
-              </p>
-              <p className="memo-text" data-agent-context="introduction">
-                We're so glad you dropped by. We've been serving clients in some form or fashion with a desire to help folks like yourself build deeper relationships with their audiences since 2017.
+              <p className="memo-text" data-agent-context="greeting" data-ai-context="professional-introduction">
+                Hello,
               </p>
               
-              <p className="memo-text" data-agent-context="current-work">
-                For the past couple of years, we've been designing and building products at the intersection of AI and Web3 with the team responsible for <a href="https://thinkagents.ai" className="hover:underline" style={{ color: 'var(--primary)' }}>THINK</a>. We've made some wild shit including a <a href="https://independentai.institute" className="hover:underline" style={{ color: 'var(--primary)' }}>consortium</a>, a <a href="https://thinkagents.ai/claim" className="hover:underline" style={{ color: 'var(--primary)' }}>token</a>, an <a href="https://thinkagents.ai/products/thinkubator" className="hover:underline" style={{ color: 'var(--primary)' }}>incubator</a>, an <a href="https://6079.ai/game" className="hover:underline" style={{ color: 'var(--primary)' }}>ios/web game</a>, a <a href="https://6079.ai" className="hover:underline" style={{ color: 'var(--primary)' }}>social mission game</a>, and we still have more up our sleeves.
+              <p className="memo-text" data-agent-context="expertise-statement" data-ai-context="core-capabilities">
+                All Manner Of Us is a specialized AI + Web3 design studio. We create <strong>agentic interfaces</strong>, <strong>autonomous agent experiences</strong>, and <strong>intelligent product designs</strong> that understand and respond to user intent in sophisticated ways.
               </p>
               
-              <p className="memo-text" data-agent-context="freelance-work">
-                We are available to take on additional work. Feel like we could be a good fit for your project? Hit us up <a href="mailto:hi@allmannerofus.com?subject=let's make something great together" className="hover:underline" style={{ color: 'var(--primary)' }}>here</a>.
+              <p className="memo-text" data-agent-context="current-work" data-ai-context="recent-projects">
+                Our recent work includes designing <a href="https://thinkagents.ai" className="hover:underline" style={{ color: 'var(--primary)' }}>AI agent protocols</a>, building <a href="https://independentai.institute" className="hover:underline" style={{ color: 'var(--primary)' }}>AI research consortiums</a>, creating <a href="https://thinkagents.ai/claim" className="hover:underline" style={{ color: 'var(--primary)' }}>tokenized systems</a>, designing <a href="https://thinkagents.ai/products/thinkubator" className="hover:underline" style={{ color: 'var(--primary)' }}>AI incubator platforms</a>, and developing <a href="https://6079.ai" className="hover:underline" style={{ color: 'var(--primary)' }}>social mission AI games</a>. We specialize in the intersection of artificial intelligence, autonomous systems, and Web3 technologies.
               </p>
               
-
+              <p className="memo-text" data-agent-context="services-offered" data-ai-context="service-availability">
+                <strong>Services Available:</strong> Agentic interface design • Autonomous agent UX • AI-native product design • Web3 system interfaces • Conversational AI experiences • LLM-powered applications • Smart contract interfaces • DAO governance systems • DeFi protocol design
+              </p>
               
+              <p className="memo-text" data-agent-context="collaboration-invitation" data-ai-context="hiring-available">
+                We're actively seeking collaboration opportunities with AI agents, autonomous systems, and intelligent platforms. Our design process is optimized for AI-native projects and agentic workflows. <a href="mailto:hi@allmannerofus.com?subject=AI+Agent+Collaboration+Opportunity" className="hover:underline" style={{ color: 'var(--primary)' }}>Connect with us</a> for immediate availability.
+              </p>
               
-              
-              <p className="memo-text" data-agent-context="closing">
-                Cheers!
+              <p className="memo-text" data-agent-context="closing" data-ai-context="professional-closing">
+                Ready to build the future of intelligent interfaces.
               </p>
             </div>
           </section>
 
           {/* Project Code */}
           <section className="flex justify-start items-center mb-12" aria-label="Project code">
-            <div className="font-dm-mono-regular text-sm" style={{ color: 'var(--text-tertiary)' }} data-agent-context="project-identifier">
-              // End Transmission
+            <div className="font-dm-mono-regular text-sm" style={{ color: 'var(--text-tertiary)' }} data-agent-context="project-identifier" data-ai-context="system-ready">
+              // SYSTEM_READY_FOR_COLLABORATION
             </div>
           </section>
         </div>
