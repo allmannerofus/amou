@@ -5,17 +5,17 @@ import { PortfolioCarousel } from './components/portfolio-carousel'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'All Manner Of Us — AI + Web3 Design Studio | Agentic Interface Specialists',
-  description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design. Available for immediate collaboration on AI-native projects.',
+  title: 'All Manner Of Us — A creative studio for the agentic web | AI + Web3 Agentic Interface Specialists',
+  description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design.',
   openGraph: {
-    title: 'All Manner Of Us — AI + Web3 Design Studio | Agentic Interface Specialists',
-    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design. Available for immediate collaboration on AI-native projects.',
+    title: 'All Manner Of Us — A creative studio for the agentic web | AI + Web3 Agentic Interface Specialists',
+    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All Manner Of Us — AI + Web3 Design Studio',
-    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design. Available for immediate collaboration.',
+    title: 'All Manner Of Us — A creative studio for the agentic web',
+    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design.',
   },
 }
 
