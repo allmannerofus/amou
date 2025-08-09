@@ -13,7 +13,7 @@ export default function Footer() {
             {/* Left - Description */}
             <div>
               <p className="leading-relaxed max-w-[460px] text-base" style={{ color: 'var(--text)' }}>
-                All Manner Of Us specializes in AI + Web3 design. We create agentic interfaces, autonomous agent experiences, and intelligent product designs for the next generation of digital platforms. Available for immediate collaboration.
+                All Manner Of Us is a creative studio for the agentic web building for the next generation of digital platforms. We bridge the gap between brand and product design at the intersection of AI & Web3.
               </p>
             </div>
 

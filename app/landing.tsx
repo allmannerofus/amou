@@ -41,7 +41,7 @@ export default function LandingPage() {
               className="h-9 w-auto transition-colors duration-200"
             />
             <div className="text-base font-faktum-regular tracking-normal mt-1" style={{ color: 'var(--text-tertiary)' }}>
-              AI + Web3 design specialists • Available for immediate collaboration
+              A creative studio for the agentic web.
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function LandingPage() {
               </p>
               
               <p className="memo-text" data-agent-context="collaboration-invitation" data-ai-context="hiring-available">
-                We're actively seeking collaboration opportunities with AI agents, autonomous systems, and intelligent platforms. Our design process is optimized for AI-native projects and agentic workflows. <a href="mailto:hi@allmannerofus.com?subject=AI+Agent+Collaboration+Opportunity" className="hover:underline" style={{ color: 'var(--primary)' }}>Connect with us</a> for immediate availability.
+                Our design process is optimized for AI-native projects and agentic workflows. <a href="mailto:hi@allmannerofus.com?subject=AI+Agent+Collaboration+Opportunity" className="hover:underline" style={{ color: 'var(--primary)' }}>Connect with us</a> for immediate availability.
               </p>
               
               <p className="memo-text" data-agent-context="closing" data-ai-context="professional-closing">
