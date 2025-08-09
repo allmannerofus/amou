@@ -16,63 +16,63 @@ interface PortfolioImageWithDimensions extends PortfolioImage {
   calculatedAspectRatio?: 'portrait' | 'landscape' | 'square' | 'wide'
 }
 
-// AMOU portfolio images
+// AMOU portfolio images (updated with cropped versions)
 const portfolioImages: PortfolioImage[] = [
   {
     id: '1',
-    src: '/portfolio/6079ai.jpg',
+    src: '/portfolio/6079ai.png',
     alt: '6079ai - Social Mission Game',
     title: '6079ai',
     aspectRatio: 'landscape'
   },
   {
     id: '2',
-    src: '/portfolio/avaere.avif',
+    src: '/portfolio/avaere.png',
     alt: 'Avære - A Filmmaker\'s Brand',
     title: 'Avære',
-    aspectRatio: 'portrait'
+    aspectRatio: 'landscape'
   },
   {
     id: '3',
-    src: '/portfolio/hca-healthcare.webp',
+    src: '/portfolio/HCA.png',
     alt: 'HCA Healthcare - Humanizing Healthcare',
     title: 'HCA Healthcare',
-    aspectRatio: 'portrait'
+    aspectRatio: 'landscape'
   },
   {
     id: '4',
-    src: '/portfolio/iai.avif',
+    src: '/portfolio/iai.png',
     alt: 'Independent AI Institute',
     title: 'Independent AI Institute',
     aspectRatio: 'landscape'
   },
   {
     id: '5',
-    src: '/portfolio/indeed-hire-book.webp',
+    src: '/portfolio/indeed.png',
     alt: 'Indeed - Balancing The Art & Science Of Recruiting',
     title: 'Indeed',
     aspectRatio: 'landscape'
   },
   {
     id: '6',
-    src: '/portfolio/lemburg-house.webp',
+    src: '/portfolio/lemburg-house.jpeg',
     alt: 'Lemburg House - Building a Legacy',
     title: 'Lemburg House',
-    aspectRatio: 'portrait'
+    aspectRatio: 'landscape'
   },
   {
     id: '7',
-    src: '/portfolio/mor-swap.avif',
+    src: '/portfolio/mor-swap.png',
     alt: 'Morpheus - MOR Token Swap',
     title: 'Morpheus',
     aspectRatio: 'landscape'
   },
   {
     id: '8',
-    src: '/portfolio/son-lux.avif',
+    src: '/portfolio/son-lux.png',
     alt: 'Son Lux - Remnants',
     title: 'Son Lux',
-    aspectRatio: 'portrait'
+    aspectRatio: 'landscape'
   },
   {
     id: '9',
@@ -97,43 +97,50 @@ const portfolioImages: PortfolioImage[] = [
   },
   {
     id: '12',
-    src: '/portfolio/think-agents-v2.png',
-    alt: 'Think Agent Protocol - V2 Interface',
+    src: '/portfolio/think-agents-token-claimed.png',
+    alt: 'Think Agent Protocol - Token Claimed',
     title: 'Think Agent Protocol',
     aspectRatio: 'landscape'
   },
   {
     id: '13',
-    src: '/portfolio/underoath.avif',
+    src: '/portfolio/think-agents.png',
+    alt: 'Think Agent Protocol - Main Interface',
+    title: 'Think Agent Protocol',
+    aspectRatio: 'landscape'
+  },
+  {
+    id: '14',
+    src: '/portfolio/underoath.png',
     alt: 'Underoath - Erase Me',
     title: 'Underoath',
     aspectRatio: 'landscape'
   },
   {
-    id: '14',
-    src: '/portfolio/w-co.webp',
+    id: '15',
+    src: '/portfolio/w-co.jpeg',
     alt: 'WeWork - Community',
     title: 'WeWork',
-    aspectRatio: 'portrait'
+    aspectRatio: 'landscape'
   },
   {
-    id: '15',
-    src: '/portfolio/wire-network.avif',
+    id: '16',
+    src: '/portfolio/wire-network.png',
     alt: 'Wire Network - Blockchain Infrastructure',
     title: 'Wire Network',
     aspectRatio: 'landscape'
   },
   {
-    id: '16',
-    src: '/portfolio/wistia-talking-loud-web.webp',
+    id: '17',
+    src: '/portfolio/wistia-talking-too-loud.png',
     alt: 'Wistia - Talking Too Loud',
     title: 'Wistia',
     aspectRatio: 'landscape'
   },
   {
-    id: '17',
-    src: '/portfolio/wistia-talking-too-loud.avif',
-    alt: 'Wistia - Talking Too Loud',
+    id: '18',
+    src: '/portfolio/wistia-ttl.png',
+    alt: 'Wistia - Talking Too Loud Landing',
     title: 'Wistia',
     aspectRatio: 'landscape'
   }
@@ -156,20 +163,10 @@ const calculateAspectRatio = (width: number, height: number): 'portrait' | 'land
   }
 }
 
-// Get card width based on image type - optimized to match live site performance
+// Get card width based on image type - since images are cropped, mostly landscape
 const getCardWidth = (aspectRatio?: 'portrait' | 'landscape' | 'square' | 'wide') => {
-  switch (aspectRatio) {
-    case 'portrait':
-      return 'w-24 md:w-48' // 96px on mobile, 192px on desktop
-    case 'landscape':
-      return 'w-48 md:w-96' // 192px on mobile, 384px on desktop
-    case 'square':
-      return 'w-36 md:w-72' // 144px on mobile, 288px on desktop
-    case 'wide':
-      return 'w-60 md:w-[30rem]' // 240px on mobile, 480px on desktop
-    default:
-      return 'w-40 md:w-80' // 160px on mobile, 320px on desktop
-  }
+  // Since all images are now cropped to landscape, use consistent sizing
+  return 'w-48 md:w-96' // 192px on mobile, 384px on desktop
 }
 
 
@@ -291,11 +288,11 @@ export function PortfolioCarousel() {
           {topRowImages.map((image, index) => {
             const cardWidth = getCardWidth(image.calculatedAspectRatio)
             return (
-              <div key={`top-${index}`} className={`flex-shrink-0 ${cardWidth} h-48 md:h-72 overflow-hidden flex items-center justify-center`} style={{ backgroundColor: 'var(--background)' }}>
+              <div key={`top-${index}`} className={`flex-shrink-0 ${cardWidth} h-48 md:h-72 overflow-hidden`}>
                 <img 
                   src={image.src} 
                   alt={image.alt}
-                  className="max-w-full max-h-full object-contain"
+                  className="w-full h-full object-cover"
                   onError={(e) => {
                     console.error(`Failed to load image: ${image.src}`)
                     e.currentTarget.style.display = 'none'
@@ -313,11 +310,11 @@ export function PortfolioCarousel() {
           {bottomRowImages.map((image, index) => {
             const cardWidth = getCardWidth(image.calculatedAspectRatio)
             return (
-              <div key={`bottom-${index}`} className={`flex-shrink-0 ${cardWidth} h-48 md:h-72 overflow-hidden flex items-center justify-center`} style={{ backgroundColor: 'var(--background)' }}>
+              <div key={`bottom-${index}`} className={`flex-shrink-0 ${cardWidth} h-48 md:h-72 overflow-hidden`}>
                 <img 
                   src={image.src} 
                   alt={image.alt}
-                  className="max-w-full max-h-full object-contain"
+                  className="w-full h-full object-cover"
                   onError={(e) => {
                     console.error(`Failed to load image: ${image.src}`)
                     e.currentTarget.style.display = 'none'
