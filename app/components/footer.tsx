@@ -13,7 +13,7 @@ export default function Footer() {
             {/* Left - Description */}
             <div>
               <p className="leading-relaxed max-w-[460px] text-base" style={{ color: 'var(--text)' }}>
-                All Manner Of Us is a creative studio for the agentic web. We are at the edge of the next wave of the internet, building the new internet with AI, Web3, and cutting-edge design.
+                All Manner Of Us is a creative studio for the agentic web. We bridge the gap between brand and product design at the intersection of AI & Web3.
               </p>
             </div>
 
@@ -45,7 +45,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4 md:mb-8">
             {/* Left - You're Ever Seen (desktop only) */}
             <div className="hidden md:flex items-end justify-start">
-              <p className="font-newsreader-regular italic text-2xl" style={{ letterSpacing: '-0.2px', color: 'var(--text-secondary)' }}>
+              <p className="italic text-2xl" style={{ fontFamily: 'var(--font-newsreader), Georgia, serif', fontWeight: 400, letterSpacing: '-0.2px', color: 'var(--text-secondary)' }}>
                 You're Ever Seen™
               </p>
             </div>
@@ -64,7 +64,7 @@ export default function Footer() {
       {/* You're Ever Seen - Mobile only */}
       <div className="px-8 md:px-20 py-6 md:hidden" style={{ backgroundColor: 'var(--background)' }}>
         <div className="max-w-7xl mx-auto md:max-w-none md:mx-0">
-          <p className="font-newsreader-regular italic text-2xl" style={{ letterSpacing: '-0.2px', color: 'var(--text-secondary)' }}>
+          <p className="italic text-2xl" style={{ fontFamily: 'var(--font-newsreader), Georgia, serif', fontWeight: 400, letterSpacing: '-0.2px', color: 'var(--text-secondary)' }}>
             You're Ever Seen™
           </p>
         </div>
