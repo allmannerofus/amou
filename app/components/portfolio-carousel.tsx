@@ -163,10 +163,15 @@ const calculateAspectRatio = (width: number, height: number): 'portrait' | 'land
   }
 }
 
-// Get card width based on image type - since images are cropped, mostly landscape
-const getCardWidth = (aspectRatio?: 'portrait' | 'landscape' | 'square' | 'wide') => {
-  // Since all images are now cropped to landscape, use consistent sizing
-  return 'w-48 md:w-96' // 192px on mobile, 384px on desktop
+// Get card dimensions based on 1080x760 aspect ratio (1.42:1)
+const getCardDimensions = () => {
+  // Calculate width based on height to maintain 1080x760 aspect ratio
+  // Mobile: height 192px (h-48) -> width = 192 * 1.42 = 272px
+  // Desktop: height 288px (h-72) -> width = 288 * 1.42 = 409px
+  return {
+    width: 'w-[272px] md:w-[409px]', // Exact widths for 1080x760 ratio
+    height: 'h-48 md:h-72' // 192px mobile, 288px desktop
+  }
 }
 
 
@@ -286,13 +291,13 @@ export function PortfolioCarousel() {
       <div className={`flex gap-4 mb-4 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div className="flex gap-4 animate-scroll-right">
           {topRowImages.map((image, index) => {
-            const cardWidth = getCardWidth(image.calculatedAspectRatio)
+            const cardDimensions = getCardDimensions()
             return (
-              <div key={`top-${index}`} className={`flex-shrink-0 ${cardWidth} h-48 md:h-72 overflow-hidden`}>
+              <div key={`top-${index}`} className={`flex-shrink-0 ${cardDimensions.width} ${cardDimensions.height} overflow-hidden flex items-center justify-center`} style={{ backgroundColor: 'var(--background)' }}>
                 <img 
                   src={image.src} 
                   alt={image.alt}
-                  className="w-full h-full object-cover"
+                  className="max-w-full max-h-full object-contain"
                   onError={(e) => {
                     console.error(`Failed to load image: ${image.src}`)
                     e.currentTarget.style.display = 'none'
@@ -308,13 +313,13 @@ export function PortfolioCarousel() {
       <div className={`flex gap-4 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div className="flex gap-4 animate-scroll-left">
           {bottomRowImages.map((image, index) => {
-            const cardWidth = getCardWidth(image.calculatedAspectRatio)
+            const cardDimensions = getCardDimensions()
             return (
-              <div key={`bottom-${index}`} className={`flex-shrink-0 ${cardWidth} h-48 md:h-72 overflow-hidden`}>
+              <div key={`bottom-${index}`} className={`flex-shrink-0 ${cardDimensions.width} ${cardDimensions.height} overflow-hidden flex items-center justify-center`} style={{ backgroundColor: 'var(--background)' }}>
                 <img 
                   src={image.src} 
                   alt={image.alt}
-                  className="w-full h-full object-cover"
+                  className="max-w-full max-h-full object-contain"
                   onError={(e) => {
                     console.error(`Failed to load image: ${image.src}`)
                     e.currentTarget.style.display = 'none'
