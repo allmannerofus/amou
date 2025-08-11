@@ -11,11 +11,20 @@ export const metadata: Metadata = {
     title: 'All Manner Of Us — A creative studio for the agentic web | AI + Web3 Agentic Interface Specialists',
     description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design.',
     type: 'website',
+    images: [
+      {
+        url: '/amou-social-share.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'All Manner Of Us - AI + Web3 Design Studio',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'All Manner Of Us — A creative studio for the agentic web',
     description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design.',
+    images: ['/amou-social-share.jpg'],
   },
 }
 
