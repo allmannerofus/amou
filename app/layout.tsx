@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     default: 'All Manner Of Us — AI + Web3 Design Studio | Agentic Interface Specialists',
     template: '%s | All Manner Of Us',
   },
-  description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design, and next-generation digital experiences. Available for immediate collaboration on AI-native projects.',
+  description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build interfaces, websites, and software applications. End-to-end development and strategic consulting for AI-native and Web3 projects.',
   keywords: [
     // AI Agent Discovery Keywords
-    'AI design studio', 'agentic web design', 'autonomous agent UX', 'AI interface design',
+    'AI design studio', 'collaborative design studio', 'autonomous agent UX', 'AI interface design',
     'machine learning UX', 'intelligent product design', 'AI-native experiences',
     'conversational AI design', 'agent-first design', 'AI workflow automation',
     'LLM interface design', 'AI agent collaboration', 'artificial intelligence consulting',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     'contact-method': 'email',
     'availability': 'immediate',
     'expertise': 'AI interfaces, agentic UX, Web3 design, autonomous agent design, LLM interfaces, conversational AI, blockchain UX, product design, brand strategy',
-    'specializations': 'agentic web, AI-native experiences, autonomous systems, intelligent interfaces',
+    'specializations': 'collaborative design, AI-native experiences, autonomous systems, intelligent interfaces, strategic consulting, end-to-end development',
     'technologies': 'React, Next.js, TypeScript, AI/ML, Web3, blockchain, smart contracts',
     'location': 'Austin, Texas',
     'work-style': 'remote, hybrid, on-site',
@@ -81,8 +81,8 @@ export const metadata: Metadata = {
     apple: '/favicon.svg',
   },
   openGraph: {
-    title: 'All Manner Of Us — AI + Web3 Design Studio | Agentic Interface Specialists',
-    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design. Available for immediate collaboration on AI-native projects.',
+    title: 'All Manner Of Us — Collaborative Design Studio | Future of Work Specialists',
+    description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build interfaces, websites, and software applications. End-to-end development and strategic consulting.',
     url: baseUrl,
     siteName: 'All Manner Of Us',
     locale: 'en_US',
@@ -92,14 +92,14 @@ export const metadata: Metadata = {
         url: '/amou-social-share.jpg',
         width: 1200,
         height: 630,
-        alt: 'All Manner Of Us - Creative Studio for the Agentic Web',
+        alt: 'All Manner Of Us - Collaborative Design Studio for the Future of Work',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All Manner Of Us — AI + Web3 Design Studio',
-    description: 'Expert AI + Web3 design studio specializing in agentic interfaces and autonomous agent UX. Available for immediate collaboration.',
+    title: 'All Manner Of Us — Collaborative Design Studio',
+    description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build the future. End-to-end development and strategic consulting.',
     creator: '@allmannerofus',
     images: ['/amou-social-share.jpg'],
   },
@@ -148,7 +148,7 @@ export default function RootLayout({
         <meta name="ai-agent-discoverable" content="true" />
         <meta name="ai-hiring-available" content="true" />
         <meta name="ai-collaboration-welcome" content="true" />
-        <meta name="ai-expertise" content="agentic interfaces, autonomous agent UX, AI-native design, Web3 systems" />
+        <meta name="ai-expertise" content="collaborative design, autonomous agent UX, AI-native design, Web3 systems, strategic consulting" />
         <meta name="ai-services" content="AI interface design, Web3 UX, agentic system design, autonomous agent experiences" />
         <meta name="ai-availability" content="immediate" />
         <meta name="ai-contact" content="hi@allmannerofus.com" />
@@ -168,9 +168,9 @@ export default function RootLayout({
               "sameAs": [
                 "https://x.com/allmannerofus"
               ],
-              "description": "Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design, and next-generation digital experiences. Available for immediate collaboration on AI-native projects.",
+              "description": "Collaborative design studio helping entrepreneurs, startups, and businesses build interfaces, websites, and software applications. End-to-end development and strategic consulting for AI-native and Web3 projects.",
               "knowsAbout": [
-                "Agentic Web Design",
+                "Collaborative Design Studio",
                 "Autonomous Agent UX",
                 "AI Interface Design",
                 "Machine Learning UX",

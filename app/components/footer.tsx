@@ -13,7 +13,7 @@ export default function Footer() {
             {/* Left - Description */}
             <div>
               <p className="leading-relaxed max-w-[460px] text-base" style={{ color: 'var(--text)' }}>
-                All Manner Of Us is a creative studio for the agentic web building for the next generation of digital platforms. We bridge the gap between brand and product design at the intersection of AI & Web3.
+                All Manner Of Us is a collaborative design studio helping entrepreneurs, startups, and businesses build the future. We dream up, design, and ship interfaces, websites, and software applications that connect with your audience and empower them to move.
               </p>
             </div>
 

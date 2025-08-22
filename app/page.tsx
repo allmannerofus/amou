@@ -27,7 +27,7 @@ export default function Page() {
           </h1>
           
           <h2 className="text-xs font-dm-mono mb-6" style={{color: '#6b7280'}}>
-            CREATIVE STUDIO FOR THE AGENTIC WEB
+            CREATIVE STUDIO FOR THE FUTURE OF WORK
           </h2>
 
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mb-8">
@@ -53,7 +53,7 @@ export default function Page() {
             <div className="md:col-span-4">
               <div className="max-w-2xl">
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                  All Manner Of Us is a creative studio for the agentic web. We are at the edge of the next wave of the internet, building the new internet with AI, Web3, and cutting-edge design.
+                  All Manner Of Us is a collaborative design studio helping entrepreneurs, startups, and businesses build the future. We dream up, design, and ship interfaces, websites, and software applications that connect with your audience and empower them to move.
                 </p>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                   Our approach is human-centric, systematic, and practical. The result is work that connects with your audience and empowers them to move forward in the rapidly evolving digital landscape.

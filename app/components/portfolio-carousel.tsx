@@ -97,7 +97,7 @@ const portfolioImages: PortfolioImage[] = [
   },
   {
     id: '12',
-    src: '/portfolio/think-agents-token-claimed.png',
+    src: '/portfolio/think-agents-token-claimed-2.png',
     alt: 'Think Agent Protocol - Token Claimed',
     title: 'Think Agent Protocol',
     aspectRatio: 'landscape'
@@ -143,8 +143,50 @@ const portfolioImages: PortfolioImage[] = [
     alt: 'Wistia - Talking Too Loud Landing',
     title: 'Wistia',
     aspectRatio: 'landscape'
+  },
+  {
+    id: '19',
+    src: '/portfolio/souls-1.png',
+    alt: 'Souls - Collection 1',
+    title: 'Souls',
+    aspectRatio: 'landscape'
+  },
+  {
+    id: '20',
+    src: '/portfolio/souls-2.png',
+    alt: 'Souls - Collection 2',
+    title: 'Souls',
+    aspectRatio: 'landscape'
+  },
+  {
+    id: '21',
+    src: '/portfolio/souls-3.png',
+    alt: 'Souls - Collection 3',
+    title: 'Souls',
+    aspectRatio: 'landscape'
+  },
+  {
+    id: '22',
+    src: '/portfolio/monkz-xyz.png',
+    alt: 'Monkz XYZ',
+    title: 'Monkz XYZ',
+    aspectRatio: 'landscape'
   }
 ]
+
+// Add IDs of images you want to hide here
+const HIDDEN_IMAGE_IDS: string[] = ['2', '15', '8', '6', '5', '3','17']
+// Example: '1', '5', '12'
+// Add the IDs of images you want to hide
+
+// Filter out hidden images
+const visiblePortfolioImages = portfolioImages.filter(image => !HIDDEN_IMAGE_IDS.includes(image.id))
+
+// Debug: Log which images are hidden and which are visible
+console.log('Hidden image IDs:', HIDDEN_IMAGE_IDS)
+console.log('Total portfolio images:', portfolioImages.length)
+console.log('Visible portfolio images:', visiblePortfolioImages.length)
+console.log('Hidden images:', portfolioImages.filter(image => HIDDEN_IMAGE_IDS.includes(image.id)).map(img => img.title))
 
 // Calculate aspect ratio from actual image dimensions
 const calculateAspectRatio = (width: number, height: number): 'portrait' | 'landscape' | 'square' | 'wide' => {
@@ -185,7 +227,7 @@ export function PortfolioCarousel() {
     const loadImageDimensions = async () => {
       const loadedImages: PortfolioImageWithDimensions[] = []
       
-      for (const image of portfolioImages) {
+      for (const image of visiblePortfolioImages) {
         try {
           const img = new Image()
           
@@ -259,8 +301,32 @@ export function PortfolioCarousel() {
     }
   }
 
-  const topRowImages = createRowImages(imagesWithDimensions, true)
-  const bottomRowImages = createRowImages(imagesWithDimensions, false)
+  // Ensure Souls images are distributed across different rows
+  const distributeSoulsImages = (images: PortfolioImageWithDimensions[]) => {
+    const soulsImages = images.filter(img => img.title === 'Souls')
+    const otherImages = images.filter(img => img.title !== 'Souls')
+    
+    // Split Souls images between rows
+    const topSouls = soulsImages.slice(0, 1) // First Souls image goes to top
+    const bottomSouls = soulsImages.slice(1) // Remaining Souls images go to bottom
+    
+    // Distribute other images
+    const halfLength = Math.ceil(otherImages.length / 2)
+    const topOther = otherImages.slice(0, halfLength)
+    const bottomOther = otherImages.slice(halfLength)
+    
+    return {
+      topRow: [...topOther, ...topSouls],
+      bottomRow: [...bottomOther, ...bottomSouls]
+    }
+  }
+
+  // Use the Souls distribution function instead of random splitting
+  const { topRow, bottomRow } = distributeSoulsImages(imagesWithDimensions)
+  
+  // Create the final row arrays with tripled images for seamless loops
+  const topRowImages = [...topRow, ...topRow, ...topRow]
+  const bottomRowImages = [...bottomRow, ...bottomRow, ...bottomRow]
 
   if (imagesWithDimensions.length === 0) {
     return (

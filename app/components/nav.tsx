@@ -28,7 +28,7 @@ export function Navbar() {
           <div className="hidden md:block text-4xl md:text-5xl font-faktum-medium tracking-tight mb-4 no-underline hover:no-underline" style={{ color: 'var(--text-secondary)' }}>
             All Manner Of Us
             <div className="text-base font-faktum-regular tracking-normal mt-2" style={{ color: 'var(--text-tertiary)' }}>
-            A creative studio for the agentic web.
+            A creative studio for the future of work.
             </div>
           </div>
           <Logo size="md" className="w-10 h-10 md:hidden" />
@@ -66,7 +66,7 @@ export function Navbar() {
               />
             </Link>
             <div className="text-base font-faktum-regular tracking-normal mt-2" style={{ color: 'var(--text-tertiary)' }}>
-            A creative studio for the agentic web.
+            A creative studio for the future of work.
             </div>
           </div>
           <Logo size="md" className="w-10 h-10 md:hidden" />

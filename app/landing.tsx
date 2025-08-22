@@ -1,29 +1,29 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Logo } from './components/logo'
+import { Logo, WordmarkLogo } from './components/logo'
 import { PortfolioCarousel } from './components/portfolio-carousel'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'All Manner Of Us — A creative studio for the agentic web | AI + Web3 Agentic Interface Specialists',
-  description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design.',
+  title: 'All Manner Of Us — A creative studio for the future of work | Collaborative Design & Development',
+  description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build interfaces, websites, and software applications. End-to-end development and strategic consulting.',
   openGraph: {
-    title: 'All Manner Of Us — A creative studio for the agentic web | AI + Web3 Agentic Interface Specialists',
-    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design.',
+    title: 'All Manner Of Us — A creative studio for the future of work | Collaborative Design & Development',
+    description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build interfaces, websites, and software applications. End-to-end development and strategic consulting.',
     type: 'website',
     images: [
       {
         url: '/amou-social-share.jpg',
         width: 1200,
         height: 630,
-        alt: 'All Manner Of Us - AI + Web3 Design Studio',
+        alt: 'All Manner Of Us - Collaborative Design Studio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All Manner Of Us — A creative studio for the agentic web',
-    description: 'Expert AI + Web3 design studio specializing in agentic interfaces, autonomous agent UX, intelligent product design.',
+    title: 'All Manner Of Us — A creative studio for the future of work',
+    description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build interfaces, websites, and software applications. End-to-end development and strategic consulting.',
     images: ['/amou-social-share.jpg'],
   },
 }
@@ -42,15 +42,9 @@ export default function LandingPage() {
         {/* Mobile Hero Section */}
         <div className="md:hidden px-8 mb-8">
           <div className="flex flex-col items-start">
-            <Image
-              src="/logo-wordmark-light-mode.svg"
-              alt="All Manner Of Us"
-              width={150}
-              height={36}
-              className="h-9 w-auto transition-colors duration-200"
-            />
+            <WordmarkLogo size="md" className="h-9 w-auto" />
             <div className="text-base font-faktum-regular tracking-normal mt-1" style={{ color: 'var(--text-tertiary)' }}>
-              A creative studio for the agentic web.
+              A creative studio for the future of work.
             </div>
           </div>
         </div>
@@ -72,33 +66,33 @@ export default function LandingPage() {
               </p>
               
               <p className="memo-text" data-agent-context="expertise-statement" data-ai-context="core-capabilities">
-                All Manner Of Us is a specialized AI + Web3 design studio. We create <strong>agentic interfaces</strong>, <strong>autonomous agent experiences</strong>, and <strong>intelligent product designs</strong> that understand and respond to user intent in sophisticated ways.
+                We are a collaborative design studio that helps entrepreneurs, startups, and businesses build the future. We dream up, design, and ship interfaces, websites, and software applications that connect with your audience and empower them to move.
               </p>
               
               <p className="memo-text" data-agent-context="current-work" data-ai-context="recent-projects">
-                Our recent work includes designing <a href="https://thinkagents.ai" className="hover:underline" style={{ color: 'var(--primary)' }}>AI agent protocols</a>, building <a href="https://independentai.institute" className="hover:underline" style={{ color: 'var(--primary)' }}>AI research consortiums</a>, creating <a href="https://thinkagents.ai/claim" className="hover:underline" style={{ color: 'var(--primary)' }}>tokenized systems</a>, designing <a href="https://thinkagents.ai/products/thinkubator" className="hover:underline" style={{ color: 'var(--primary)' }}>AI incubator platforms</a>, and developing <a href="https://6079.ai" className="hover:underline" style={{ color: 'var(--primary)' }}>social mission AI games</a>. We specialize in the intersection of artificial intelligence, autonomous systems, and Web3 technologies.
+                We've partnered with teams to design <a href="https://thinkagents.ai" className="hover:underline" style={{ color: 'var(--primary)' }}>AI agent protocols</a>, build <a href="https://independentai.institute" className="hover:underline" style={{ color: 'var(--primary)' }}>research consortiums</a>, create <a href="https://thinkagents.ai/claim" className="hover:underline" style={{ color: 'var(--primary)' }}>tokenized systems</a>, design <a href="https://thinkagents.ai/products/thinkubator" className="hover:underline" style={{ color: 'var(--primary)' }}>incubator platforms</a>, develop <a href="https://6079.ai" className="hover:underline" style={{ color: 'var(--primary)' }}>social mission applications</a>, make <a href="https://monkz.xyz/studio" className="hover:underline" style={{ color: 'var(--primary)' }}>NFT customization tools</a>, and more. Whether you're refining your focus or building something entirely new, we can help you get to the next phase.
               </p>
               
               <p className="memo-text" data-agent-context="services-offered" data-ai-context="service-availability">
-                <strong>Services Available:</strong> Agentic interface design • Autonomous agent UX • AI-native product design • Web3 system interfaces • Conversational AI experiences • LLM-powered applications • Smart contract interfaces • DAO governance systems • DeFi protocol design
+                <strong>How We Help:</strong> End-to-end design & development • Strategic consulting & coaching • Agentic system design • AI-native product development • Web3 interfaces • Custom software solutions
               </p>
               
               <p className="memo-text" data-agent-context="collaboration-invitation" data-ai-context="hiring-available">
-                Our design process is optimized for AI-native projects and agentic workflows. <a href="mailto:hi@allmannerofus.com?subject=AI+Agent+Collaboration+Opportunity" className="hover:underline" style={{ color: 'var(--primary)' }}>Connect with us</a> for immediate availability.
+                Our approach is human-centric, systematic, and practical. We can work end-to-end or jump in to provide the specific expertise you need. <a href="mailto:hi@allmannerofus.com?subject=Let's build something together" className="hover:underline" style={{ color: 'var(--primary)' }}>Connect with us</a> to build something that moves your business forward.
               </p>
               
               <p className="memo-text" data-agent-context="closing" data-ai-context="professional-closing">
-                Ready to build the future of intelligent interfaces.
+                We're ready to build the future of work with you.
               </p>
             </div>
           </section>
 
           {/* Project Code */}
-          <section className="flex justify-start items-center mb-12" aria-label="Project code">
+          {/*<section className="flex justify-start items-center mb-12" aria-label="Project code">
             <div className="font-dm-mono-regular text-sm" style={{ color: 'var(--text-tertiary)' }} data-agent-context="project-identifier" data-ai-context="system-ready">
               // SYSTEM_READY_FOR_COLLABORATION
             </div>
-          </section>
+          </section>*/}
         </div>
       </main>
     </div>

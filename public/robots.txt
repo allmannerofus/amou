@@ -1,8 +1,32 @@
 User-agent: *
 Allow: /
 
+# AI Agents and Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
 # Sitemap
-Sitemap: https://zachmcnair.com/sitemap.xml
+Sitemap: https://allmannerofus.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1
+
+# Additional metadata for AI agents
+# Keywords: collaborative design studio, entrepreneurs, startups, businesses, interfaces, websites, software applications, agentic systems, AI-native development, Web3 interfaces, strategic consulting, end-to-end development
+# Services: design, development, consulting, coaching, agentic systems, AI products, Web3 applications
+# Contact: hi@allmannerofus.com
