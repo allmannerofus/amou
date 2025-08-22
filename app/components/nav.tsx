@@ -23,16 +23,19 @@ export function Navbar() {
         <div className="gradient-bar h-2 w-full"></div>
         
         <nav className="flex items-center justify-between pt-8 md:pt-[100px] pb-6 px-8 md:px-20" style={{ backgroundColor: 'var(--background)' }}>
-                  {/* Left side - Logo and Name */}
-        <div className="flex items-center gap-4">
-          <div className="hidden md:block text-4xl md:text-5xl font-faktum-medium tracking-tight mb-4 no-underline hover:no-underline" style={{ color: 'var(--text-secondary)' }}>
-            All Manner Of Us
-            <div className="text-base font-faktum-regular tracking-normal mt-2" style={{ color: 'var(--text-tertiary)' }}>
-            A creative studio for the future of work.
+          {/* Left side - Logo and Name */}
+          <div className="flex items-center gap-4">
+            {/* Desktop & Tablet: Full name + tagline (md and above) */}
+            <div className="hidden md:block text-4xl md:text-5xl font-faktum-medium tracking-tight mb-4 no-underline hover:no-underline" style={{ color: 'var(--text-secondary)' }}>
+              All Manner Of Us
+              <div className="text-base font-faktum-regular tracking-normal mt-2" style={{ color: 'var(--text-tertiary)' }}>
+                A creative studio for the future of work.
+              </div>
             </div>
+            
+            {/* Mobile: Just the icon logo (below md) */}
+            <Logo size="md" className="w-10 h-10 md:hidden" />
           </div>
-          <Logo size="md" className="w-10 h-10 md:hidden" />
-        </div>
           
           {/* Right side - Theme Toggle and Logo */}
           <div className="flex items-center gap-4">
@@ -55,6 +58,7 @@ export function Navbar() {
       <nav className="flex items-center justify-between pt-8 md:pt-[100px] pb-6 px-8 md:px-20" style={{ backgroundColor: 'var(--background)' }}>
         {/* Left side - Logo and Wordmark */}
         <div className="flex items-center gap-4 md:items-center">
+          {/* Desktop & Tablet: Full logo + tagline (md and above) */}
           <div className="hidden md:flex md:flex-col md:items-start md:justify-center">
             <Link href="/" className="no-underline hover:no-underline">
               <Image
@@ -66,9 +70,11 @@ export function Navbar() {
               />
             </Link>
             <div className="text-base font-faktum-regular tracking-normal mt-2" style={{ color: 'var(--text-tertiary)' }}>
-            A creative studio for the future of work.
+              A creative studio for the future of work.
             </div>
           </div>
+          
+          {/* Mobile: Just the icon logo (below md) */}
           <Logo size="md" className="w-10 h-10 md:hidden" />
         </div>
         
