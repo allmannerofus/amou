@@ -25,7 +25,6 @@ We've partnered with teams to design AI agent protocols, build research consorti
 
 - **Frontend**: Next.js 15, TypeScript, Tailwind CSS
 - **Design**: Faktum font family, custom design system
-- **Integrations**: Last.fm scrobbler, weather widgets
 - **Deployment**: Vercel with analytics and performance monitoring
 - **AI/Web3**: Agentic interfaces, autonomous systems, blockchain UX
 
@@ -36,26 +35,6 @@ We've partnered with teams to design AI agent protocols, build research consorti
 - Dark/light mode support
 - AI agent discoverability and SEO optimization
 - Portfolio carousel showcasing recent work
-- Real-time integrations (Last.fm, weather)
-
-## Environment Setup
-
-To run this project locally:
-
-1. Copy the example environment file:
-   ```bash
-   cp .env.example .env.local
-   ```
-
-2. Get a Last.fm API key:
-   - Visit [Last.fm API](https://www.last.fm/api/account/create)
-   - Create an account and generate an API key
-   - Add your API key to `.env.local`:
-     ```
-     LASTFM_API_KEY=your_actual_api_key_here
-     ```
-
-3. Update the username in `app/api/lastfm/route.ts` to match your Last.fm username
 
 ## Development
 
