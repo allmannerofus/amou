@@ -6,17 +6,14 @@ export async function GET() {
     const lat = 30.2672
     const lon = -97.7431
     
-    // Using OpenWeatherMap API (you'll need to add OPENWEATHER_API_KEY to your environment variables)
-    const apiKey = process.env.OPENWEATHER_API_KEY || 'e62243750df3f112863afe705b4cbf82'
+    // Using OpenWeatherMap API
+    const apiKey = process.env.OPENWEATHER_API_KEY
     
-    if (apiKey === 'demo') {
-      // Return demo data if no API key is provided
-      return NextResponse.json({
-        temperature: 98,
-        condition: 'Partly Cloudy',
-        icon: 'partly-cloudy'
-      })
+    if (!apiKey) {
+      throw new Error('OPENWEATHER_API_KEY environment variable is not set')
     }
+    
+
     
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`
@@ -64,8 +61,8 @@ export async function GET() {
     
     // Return fallback data
     return NextResponse.json({
-      temperature: 98,
-      condition: 'Partly Cloudy',
+      temperature: null,
+      condition: 'Close To The Clouds',
       icon: 'partly-cloudy'
     })
   }
