@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 interface WeatherData {
-  temperature: number
+  temperature: number | null
   condition: string
   icon: string
 }
@@ -21,19 +21,19 @@ export function WeatherWidget() {
           const data = await response.json()
           setWeather(data)
         } else {
-          // Fallback data if API fails
-          setWeather({
-            temperature: 98,
-            condition: 'Partly Cloudy',
-            icon: 'partly-cloudy'
-          })
+                  // Fallback data if API fails
+        setWeather({
+          temperature: null,
+          condition: 'Close To The Clouds',
+          icon: 'partly-cloudy'
+        })
         }
       } catch (error) {
         console.error('Failed to fetch weather:', error)
         // Fallback data
         setWeather({
-          temperature: 98,
-          condition: 'Partly Cloudy',
+          temperature: null,
+          condition: 'Close To The Clouds',
           icon: 'partly-cloudy'
         })
       } finally {
@@ -114,7 +114,7 @@ export function WeatherWidget() {
     <div className="flex items-center gap-2">
       {getWeatherIcon(weather.icon)}
       <div className="text-sm" style={{ color: 'var(--text)' }}>
-        <div>{weather.condition} and {weather.temperature}°F</div>
+        <div>{weather.condition}{weather.temperature ? ` and ${weather.temperature}°F` : ''}</div>
         <div>in Austin, Texas</div>
       </div>
     </div>
