@@ -239,7 +239,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased font-faktum">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main className="min-h-screen">
+          <main className="min-h-screen pt-28 md:pt-0">
             {!WIP && <Navbar />}
             {children}
             {!WIP && <Footer />}

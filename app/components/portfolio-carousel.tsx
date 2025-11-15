@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 
 interface PortfolioImage {
   id: string
@@ -10,172 +10,235 @@ interface PortfolioImage {
   aspectRatio?: 'portrait' | 'landscape' | 'square' | 'wide' // Fallback if auto-detection fails
 }
 
-interface PortfolioImageWithDimensions extends PortfolioImage {
-  naturalWidth?: number
-  naturalHeight?: number
-  calculatedAspectRatio?: 'portrait' | 'landscape' | 'square' | 'wide'
-}
 
-// AMOU portfolio images (updated with cropped versions)
+// AMOU portfolio images (updated with new portfolio folder)
 const portfolioImages: PortfolioImage[] = [
   {
     id: '1',
-    src: '/portfolio/6079ai.png',
-    alt: '6079ai - Social Mission Game',
-    title: '6079ai',
-    aspectRatio: 'landscape'
+    src: '/portfolio/6079-Dashboard.png',
+    alt: '6079 - Dashboard',
+    title: '6079',
   },
   {
     id: '2',
-    src: '/portfolio/avaere.png',
-    alt: 'Avære - A Filmmaker\'s Brand',
-    title: 'Avære',
-    aspectRatio: 'landscape'
+    src: '/portfolio/6079-home.png',
+    alt: '6079 - Home Interface',
+    title: '6079',
   },
   {
     id: '3',
-    src: '/portfolio/HCA.png',
-    alt: 'HCA Healthcare - Humanizing Healthcare',
-    title: 'HCA Healthcare',
-    aspectRatio: 'landscape'
+    src: '/portfolio/6079-nodeshifter.png',
+    alt: '6079 - NodeShifter',
+    title: '6079',
+  },
+  {
+    id: '36',
+    src: '/portfolio/6079-404.jpg',
+    alt: '6079 - 404',
+    title: '6079',
+  },
+  {
+    id: '37',
+    src: '/portfolio/6079-Navigation.png',
+    alt: '6079 - Navigation',
+    title: '6079',
   },
   {
     id: '4',
-    src: '/portfolio/iai.png',
-    alt: 'Independent AI Institute',
-    title: 'Independent AI Institute',
-    aspectRatio: 'landscape'
+    src: '/portfolio/think-agents.png',
+    alt: 'THINK Agents - AI Platform',
+    title: 'THINK Agents',
   },
   {
     id: '5',
-    src: '/portfolio/indeed.png',
-    alt: 'Indeed - Balancing The Art & Science Of Recruiting',
-    title: 'Indeed',
-    aspectRatio: 'landscape'
+    src: '/portfolio/think-agents-ai-dashboard.png',
+    alt: 'THINK Agents - AI Dashboard',
+    title: 'THINK Agents',
   },
   {
     id: '6',
-    src: '/portfolio/lemburg-house.jpeg',
-    alt: 'Lemburg House - Building a Legacy',
-    title: 'Lemburg House',
-    aspectRatio: 'landscape'
+    src: '/portfolio/think-agents-claim.png',
+    alt: 'THINK Agents - Claim',
+    title: 'THINK Agents',
   },
   {
     id: '7',
-    src: '/portfolio/mor-swap.png',
-    alt: 'Morpheus - MOR Token Swap',
-    title: 'Morpheus',
-    aspectRatio: 'landscape'
+    src: '/portfolio/think-agents-thinkubator.jpg',
+    alt: 'THINK Agents - Thinkubator',
+    title: 'THINK Agents',
   },
   {
     id: '8',
-    src: '/portfolio/son-lux.png',
-    alt: 'Son Lux - Remnants',
-    title: 'Son Lux',
-    aspectRatio: 'landscape'
+    src: '/portfolio/thinkagents-ai-products-thinkubator.png',
+    alt: 'THINK Agents - Thinkubator Products',
+    title: 'THINK Agents',
   },
   {
     id: '9',
-    src: '/portfolio/think-agents-claim.png',
-    alt: 'Think Agent Protocol - Claim Interface',
-    title: 'Think Agent Protocol',
-    aspectRatio: 'landscape'
+    src: '/portfolio/think-agents-token-claimed.png',
+    alt: 'THINK Agents - Token',
+    title: 'THINK Agents',
   },
   {
     id: '10',
-    src: '/portfolio/think-agents-dashboard.png',
-    alt: 'Think Agent Protocol - Dashboard',
-    title: 'Think Agent Protocol',
-    aspectRatio: 'landscape'
+    src: '/portfolio/think-agents-token-claimed-2.png',
+    alt: 'THINK Agents - Token 2',
+    title: 'THINK Agents',
   },
   {
     id: '11',
-    src: '/portfolio/think-agents-thinkubator.png',
-    alt: 'Think Agent Protocol - Thinkubator',
-    title: 'Think Agent Protocol',
-    aspectRatio: 'landscape'
+    src: '/portfolio/SOULS-1c.jpg',
+    alt: 'Souls - Collection 1',
+    title: 'Souls',
   },
   {
     id: '12',
-    src: '/portfolio/think-agents-token-claimed-2.png',
-    alt: 'Think Agent Protocol - Token Claimed',
-    title: 'Think Agent Protocol',
-    aspectRatio: 'landscape'
+    src: '/portfolio/SOULS-2c.jpg',
+    alt: 'Souls - Collection 2',
+    title: 'Souls',
   },
   {
     id: '13',
-    src: '/portfolio/think-agents.png',
-    alt: 'Think Agent Protocol - Main Interface',
-    title: 'Think Agent Protocol',
-    aspectRatio: 'landscape'
+    src: '/portfolio/SOULS-3c.jpg',
+    alt: 'Souls - Collection 3',
+    title: 'Souls',
   },
   {
-    id: '14',
-    src: '/portfolio/underoath.png',
-    alt: 'Underoath - Erase Me',
-    title: 'Underoath',
-    aspectRatio: 'landscape'
+    id: '39',
+    src: '/portfolio/SOULS-Marcom-Home.jpg',
+    alt: 'Souls Marcom',
+    title: 'Souls',
+  },
+  {
+    id: '38',
+    src: '/portfolio/monkz-xyz-studio.png',
+    alt: 'Mindful Monkz Studio',
+    title: 'Mindful Monkz',
   },
   {
     id: '15',
-    src: '/portfolio/w-co.jpeg',
-    alt: 'WeWork - Community',
-    title: 'WeWork',
-    aspectRatio: 'landscape'
+    src: '/portfolio/ThinkOS-Browser-Landing.png',
+    alt: 'ThinkOS Browser',
+    title: 'ThinkOS',
   },
   {
     id: '16',
-    src: '/portfolio/wire-network.png',
-    alt: 'Wire Network - Blockchain Infrastructure',
-    title: 'Wire Network',
-    aspectRatio: 'landscape'
+    src: '/portfolio/ThinkOS-Extension.png',
+    alt: 'ThinkOS Extension',
+    title: 'ThinkOS',
   },
   {
     id: '17',
-    src: '/portfolio/wistia-talking-too-loud.png',
-    alt: 'Wistia - Talking Too Loud',
-    title: 'Wistia',
-    aspectRatio: 'landscape'
+    src: '/portfolio/ThinkOS-Extension-2.png',
+    alt: 'ThinkOS Extension 2',
+    title: 'ThinkOS',
   },
   {
     id: '18',
-    src: '/portfolio/wistia-ttl.png',
-    alt: 'Wistia - Talking Too Loud Landing',
-    title: 'Wistia',
-    aspectRatio: 'landscape'
+    src: '/portfolio/wire-network.png',
+    alt: 'Wire Network',
+    title: 'Wire Network',
   },
   {
     id: '19',
-    src: '/portfolio/souls-1.png',
-    alt: 'Souls - Collection 1',
-    title: 'Souls',
-    aspectRatio: 'landscape'
+    src: '/portfolio/iai.png',
+    alt: 'IAI',
+    title: 'IAI',
   },
   {
     id: '20',
-    src: '/portfolio/souls-2.png',
-    alt: 'Souls - Collection 2',
-    title: 'Souls',
-    aspectRatio: 'landscape'
+    src: '/portfolio/mor-swap.png',
+    alt: 'MOR Swap',
+    title: 'MOR Swap',
   },
   {
     id: '21',
-    src: '/portfolio/souls-3.png',
-    alt: 'Souls - Collection 3',
-    title: 'Souls',
-    aspectRatio: 'landscape'
+    src: '/portfolio/indeed.png',
+    alt: 'Indeed',
+    title: 'Indeed',
   },
   {
     id: '22',
-    src: '/portfolio/monkz-xyz.png',
-    alt: 'Monkz XYZ',
-    title: 'Monkz XYZ',
-    aspectRatio: 'landscape'
+    src: '/portfolio/HCA.png',
+    alt: 'HCA Healthcare',
+    title: 'HCA Healthcare',
+  },
+  {
+    id: '23',
+    src: '/portfolio/underoath.png',
+    alt: 'Underoath',
+    title: 'Underoath',
+  },
+  {
+    id: '24',
+    src: '/portfolio/son-lux.png',
+    alt: 'Son Lux',
+    title: 'Son Lux',
+  },
+  {
+    id: '25',
+    src: '/portfolio/wistia-talking-too-loud.png',
+    alt: 'Wistia',
+    title: 'Wistia',
+  },
+  {
+    id: '26',
+    src: '/portfolio/wistia-talking-loud-web.webp',
+    alt: 'Wistia Web',
+    title: 'Wistia',
+  },
+  {
+    id: '28',
+    src: '/portfolio/avaere.png',
+    alt: 'Avaere',
+    title: 'Avaere',
+  },
+  {
+    id: '29',
+    src: '/portfolio/w-co.jpeg',
+    alt: 'W-Co',
+    title: 'W-Co',
+  },
+  {
+    id: '30',
+    src: '/portfolio/lemburg-house.jpeg',
+    alt: 'Lemburg House',
+    title: 'Lemburg House',
+  },
+  {
+    id: '31',
+    src: '/portfolio/janes-dine-inn.avif',
+    alt: 'Jane\'s Dine Inn',
+    title: 'Jane\'s Dine Inn',
+  },
+  {
+    id: '32',
+    src: '/portfolio/hammock-litv.webp',
+    alt: 'Hammock',
+    title: 'Hammock',
+  },
+  {
+    id: '33',
+    src: '/portfolio/mutemath-playdead.webp',
+    alt: 'Mutemath',
+    title: 'Mutemath',
+  },
+  {
+    id: '34',
+    src: '/portfolio/creative-market-video.webp',
+    alt: 'Creative Market',
+    title: 'Creative Market',
+  },
+  {
+    id: '35',
+    src: '/portfolio/oakwood-public-market.webp',
+    alt: 'Oakwood Public Market',
+    title: 'Oakwood Public Market',
   }
 ]
 
 // Add IDs of images you want to hide here
-const HIDDEN_IMAGE_IDS: string[] = ['2', '15', '8', '6', '5', '3','17']
+const HIDDEN_IMAGE_IDS: string[] = []
 // Example: '1', '5', '12'
 // Add the IDs of images you want to hide
 
@@ -188,213 +251,168 @@ console.log('Total portfolio images:', portfolioImages.length)
 console.log('Visible portfolio images:', visiblePortfolioImages.length)
 console.log('Hidden images:', portfolioImages.filter(image => HIDDEN_IMAGE_IDS.includes(image.id)).map(img => img.title))
 
-// Calculate aspect ratio from actual image dimensions
-const calculateAspectRatio = (width: number, height: number): 'portrait' | 'landscape' | 'square' | 'wide' => {
-  const ratio = width / height
-  
-  if (ratio < 0.8) {
-    return 'portrait'
-  } else if (ratio > 1.5) {
-    return 'wide'
-  } else if (ratio > 1.1) {
-    return 'landscape'
-  } else if (ratio < 0.95) {
-    return 'portrait'
-  } else {
-    return 'square'
-  }
-}
-
-// Get card dimensions based on 1080x760 aspect ratio (1.42:1)
-const getCardDimensions = () => {
-  // Calculate width based on height to maintain 1080x760 aspect ratio
-  // Mobile: height 192px (h-48) -> width = 192 * 1.42 = 272px
-  // Desktop: height 288px (h-72) -> width = 288 * 1.42 = 409px
-  return {
-    width: 'w-[272px] md:w-[409px]', // Exact widths for 1080x760 ratio
-    height: 'h-48 md:h-72' // 192px mobile, 288px desktop
-  }
-}
 
 
 
 export function PortfolioCarousel() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [imagesWithDimensions, setImagesWithDimensions] = useState<PortfolioImageWithDimensions[]>([])
+  const [topRowImages, setTopRowImages] = useState<PortfolioImage[]>([])
+  const [bottomRowImages, setBottomRowImages] = useState<PortfolioImage[]>([])
+  const [isLoaded, setIsLoaded] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const topRowRef = useRef<HTMLDivElement>(null)
+  const bottomRowRef = useRef<HTMLDivElement>(null)
+  const animationRef = useRef<number>()
 
-  useEffect(() => {
-    // Load images and get their dimensions
-    const loadImageDimensions = async () => {
-      const loadedImages: PortfolioImageWithDimensions[] = []
-      
-      for (const image of visiblePortfolioImages) {
-        try {
-          const img = new Image()
-          
-          await new Promise((resolve) => {
-            img.onload = () => {
-              if (img.naturalWidth > 10 && img.naturalHeight > 10) {
-                const calculatedAspectRatio = calculateAspectRatio(img.naturalWidth, img.naturalHeight)
-                loadedImages.push({
-                  ...image,
-                  naturalWidth: img.naturalWidth,
-                  naturalHeight: img.naturalHeight,
-                  calculatedAspectRatio
-                })
-              } else {
-                // Fallback to manual aspect ratio if dimensions seem wrong
-                loadedImages.push({
-                  ...image,
-                  calculatedAspectRatio: image.aspectRatio || 'landscape'
-                })
-              }
-              resolve(true)
-            }
-            img.onerror = () => {
-              console.error(`Failed to load image: ${image.src}`)
-              // Fallback to manual aspect ratio if image fails to load
-              loadedImages.push({
-                ...image,
-                calculatedAspectRatio: image.aspectRatio || 'landscape'
-              })
-              resolve(true)
-            }
-            
-            img.src = image.src
-          })
-        } catch (error) {
-          console.error(`Error loading image ${image.src}:`, error)
-          loadedImages.push({
-            ...image,
-            calculatedAspectRatio: image.aspectRatio || 'landscape'
-          })
-        }
-      }
-      
-      setImagesWithDimensions(loadedImages)
+  // Create randomized rows with no duplicate images between rows
+  const createRowImages = useCallback(() => {
+    // Shuffle the portfolio images array using Fisher-Yates algorithm
+    const shuffled = [...visiblePortfolioImages]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
-
-    loadImageDimensions()
+    
+    // Split into two completely different sets - no overlap
+    const half = Math.ceil(shuffled.length / 2)
+    setTopRowImages(shuffled.slice(0, half)) // First half
+    setBottomRowImages(shuffled.slice(half)) // Second half (completely different images)
+    setIsLoaded(true)
   }, [])
 
   useEffect(() => {
-    // Trigger animation after component mounts and images are loaded
-    const timer = setTimeout(() => setIsVisible(true), 500) // Increased delay to ensure images are loaded
-    return () => clearTimeout(timer)
-  }, [imagesWithDimensions])
+    createRowImages()
+  }, [createRowImages])
 
-  // Create independent random arrays for each row - ensure different content
-  const createRowImages = (images: PortfolioImageWithDimensions[], isTopRow: boolean) => {
-    if (images.length === 0) return []
-    
-    // Split the array into two halves
-    const halfLength = Math.ceil(images.length / 2)
-    
-    if (isTopRow) {
-      // Top row gets first half, shuffled
-      const topHalf = images.slice(0, halfLength).sort(() => Math.random() - 0.5)
-      return [...topHalf, ...topHalf, ...topHalf] // Triple the images for seamless loop
-    } else {
-      // Bottom row gets second half, shuffled
-      const bottomHalf = images.slice(halfLength).sort(() => Math.random() - 0.5)
-      return [...bottomHalf, ...bottomHalf, ...bottomHalf] // Triple the images for seamless loop
+  // JavaScript-based continuous scrolling
+  useEffect(() => {
+    if (!isLoaded || !topRowRef.current || !bottomRowRef.current) return
+
+    const topRow = topRowRef.current
+    const bottomRow = bottomRowRef.current
+    const topScrollSpeed = 1.5 // pixels per frame for top row
+    const bottomScrollSpeed = 1.125 // 25% slower than top row (1.5 * 0.75)
+    let topPosition = 0
+    let bottomPosition = 0
+
+    const animate = () => {
+      // Move top row left
+      topPosition -= topScrollSpeed
+      topRow.style.transform = `translateX(${topPosition}px)`
+
+      // Move bottom row left (same direction but slower for visual variety)
+      bottomPosition -= bottomScrollSpeed
+      bottomRow.style.transform = `translateX(${bottomPosition}px)`
+
+      // Get the total width of all images in each row
+      const topImages = Array.from(topRow.children) as HTMLElement[]
+      const bottomImages = Array.from(bottomRow.children) as HTMLElement[]
+      
+      // Calculate total width of one complete set of images
+      let topRowWidth = 0
+      let bottomRowWidth = 0
+      
+      // Only count the first set (not duplicates)
+      const topSetCount = topImages.length / 2
+      const bottomSetCount = bottomImages.length / 2
+      
+      for (let i = 0; i < topSetCount; i++) {
+        topRowWidth += topImages[i].offsetWidth + 20 // 20px for gap
+      }
+      
+      for (let i = 0; i < bottomSetCount; i++) {
+        bottomRowWidth += bottomImages[i].offsetWidth + 20 // 20px for gap
+      }
+
+      // Reset top row when it has scrolled one complete set width
+      if (Math.abs(topPosition) >= topRowWidth) {
+        topPosition = 0
+        topRow.style.transform = `translateX(${topPosition}px)`
+      }
+
+      // Reset bottom row when it has scrolled one complete set width (same logic as top row)
+      if (Math.abs(bottomPosition) >= bottomRowWidth) {
+        bottomPosition = 0
+        bottomRow.style.transform = `translateX(${bottomPosition}px)`
+      }
+
+      animationRef.current = requestAnimationFrame(animate)
     }
-  }
 
-  // Ensure Souls images are distributed across different rows
-  const distributeSoulsImages = (images: PortfolioImageWithDimensions[]) => {
-    const soulsImages = images.filter(img => img.title === 'Souls')
-    const otherImages = images.filter(img => img.title !== 'Souls')
-    
-    // Split Souls images between rows
-    const topSouls = soulsImages.slice(0, 1) // First Souls image goes to top
-    const bottomSouls = soulsImages.slice(1) // Remaining Souls images go to bottom
-    
-    // Distribute other images
-    const halfLength = Math.ceil(otherImages.length / 2)
-    const topOther = otherImages.slice(0, halfLength)
-    const bottomOther = otherImages.slice(halfLength)
-    
-    return {
-      topRow: [...topOther, ...topSouls],
-      bottomRow: [...bottomOther, ...bottomSouls]
+    animate()
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
     }
-  }
+  }, [isLoaded])
 
-  // Use the Souls distribution function instead of random splitting
-  const { topRow, bottomRow } = distributeSoulsImages(imagesWithDimensions)
-  
-  // Create the final row arrays with tripled images for seamless loops
-  const topRowImages = [...topRow, ...topRow, ...topRow]
-  const bottomRowImages = [...bottomRow, ...bottomRow, ...bottomRow]
-
-  if (imagesWithDimensions.length === 0) {
+  if (!isLoaded) {
     return (
-      <div className="relative overflow-visible py-8">
-        <div className="flex justify-center items-center h-48">
-          <div className="text-gray-500">Loading portfolio...</div>
-        </div>
-      </div>
-    )
-  }
-
-  // Check if all images have dimensions (are loaded)
-  const allImagesLoaded = imagesWithDimensions.every(img => img.naturalWidth && img.naturalHeight)
-  
-  if (!allImagesLoaded) {
-    return (
-      <div className="relative overflow-visible py-8">
-        <div className="flex justify-center items-center h-48">
-          <div className="text-gray-500">Loading images...</div>
-        </div>
+      <div className="flex justify-center items-center h-64">
+        <div className="text-lg">Loading portfolio...</div>
       </div>
     )
   }
 
   return (
-    <div className="relative overflow-hidden py-8">
-      {/* Top row - moves right */}
-      <div className={`flex gap-4 mb-4 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="flex gap-4 animate-scroll-right">
-          {topRowImages.map((image, index) => {
-            const cardDimensions = getCardDimensions()
-            return (
-              <div key={`top-${index}`} className={`flex-shrink-0 ${cardDimensions.width} ${cardDimensions.height} overflow-hidden flex items-center justify-center`} style={{ backgroundColor: 'var(--background)' }}>
-                <img 
-                  src={image.src} 
-                  alt={image.alt}
-                  className="max-w-full max-h-full object-contain"
-                  onError={(e) => {
-                    console.error(`Failed to load image: ${image.src}`)
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-              </div>
-            )
-          })}
-        </div>
+    <div ref={containerRef} className="w-full overflow-hidden">
+      {/* Top Row - Scrolls Left */}
+      <div ref={topRowRef} className="flex mb-4" style={{ transform: 'translateX(0)', gap: '20px' }}>
+        {topRowImages.map((image) => (
+          <div key={`top-${image.id}`} className="flex-shrink-0">
+            <img
+              src={image.src}
+              alt={image.alt}
+              title={image.title}
+              className="portfolio-carousel-image"
+              style={{ height: '288px', width: 'auto', maxWidth: 'none', display: 'block' }}
+              loading="lazy"
+            />
+          </div>
+        ))}
+        {/* Duplicate for seamless loop */}
+        {topRowImages.map((image) => (
+          <div key={`top-duplicate-${image.id}`} className="flex-shrink-0">
+            <img
+              src={image.src}
+              alt={image.alt}
+              title={image.title}
+              className="portfolio-carousel-image"
+              style={{ height: '288px', width: 'auto', maxWidth: 'none', display: 'block' }}
+              loading="lazy"
+            />
+          </div>
+        ))}
       </div>
 
-      {/* Bottom row - moves left */}
-      <div className={`flex gap-4 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="flex gap-4 animate-scroll-left">
-          {bottomRowImages.map((image, index) => {
-            const cardDimensions = getCardDimensions()
-            return (
-              <div key={`bottom-${index}`} className={`flex-shrink-0 ${cardDimensions.width} ${cardDimensions.height} overflow-hidden flex items-center justify-center`} style={{ backgroundColor: 'var(--background)' }}>
-                <img 
-                  src={image.src} 
-                  alt={image.alt}
-                  className="max-w-full max-h-full object-contain"
-                  onError={(e) => {
-                    console.error(`Failed to load image: ${image.src}`)
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-              </div>
-            )
-          })}
-        </div>
+      {/* Bottom Row - Scrolls Left */}
+      <div ref={bottomRowRef} className="flex" style={{ transform: 'translateX(0)', gap: '20px' }}>
+        {bottomRowImages.map((image) => (
+          <div key={`bottom-${image.id}`} className="flex-shrink-0">
+            <img
+              src={image.src}
+              alt={image.alt}
+              title={image.title}
+              className="portfolio-carousel-image"
+              style={{ height: '288px', width: 'auto', maxWidth: 'none', display: 'block' }}
+              loading="lazy"
+            />
+          </div>
+        ))}
+        {/* Duplicate for seamless loop */}
+        {bottomRowImages.map((image) => (
+          <div key={`bottom-duplicate-${image.id}`} className="flex-shrink-0">
+            <img
+              src={image.src}
+              alt={image.alt}
+              title={image.title}
+              className="portfolio-carousel-image"
+              style={{ height: '288px', width: 'auto', maxWidth: 'none', display: 'block' }}
+              loading="lazy"
+            />
+          </div>
+        ))}
       </div>
     </div>
   )
