@@ -35,6 +35,13 @@ export function PortfolioMasonry() {
     }
     
     setVisibleItems(shuffled)
+    
+    // Preload first 6 images to prevent layout shift on mobile
+    const preloadImages = shuffled.slice(0, 6)
+    preloadImages.forEach((item) => {
+      const img = new Image()
+      img.src = item.src
+    })
   }, [])
 
   // Intersection Observer for fade-in on scroll
@@ -99,7 +106,7 @@ export function PortfolioMasonry() {
                 src={item.src}
                 alt={item.alt}
                 className="w-full h-auto"
-                loading="lazy"
+                loading={visibleItems.indexOf(item) < 6 ? "eager" : "lazy"}
                 decoding="async"
                 fetchPriority={visibleItems.indexOf(item) < 6 ? "high" : "low"}
               />

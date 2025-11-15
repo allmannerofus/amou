@@ -62,12 +62,6 @@ const portfolioImages: PortfolioImage[] = [
     title: 'THINK Agents',
   },
   {
-    id: '7',
-    src: '/portfolio/think-agents-thinkubator.jpg',
-    alt: 'THINK Agents - Thinkubator',
-    title: 'THINK Agents',
-  },
-  {
     id: '8',
     src: '/portfolio/thinkagents-ai-products-thinkubator.png',
     alt: 'THINK Agents - Thinkubator Products',
