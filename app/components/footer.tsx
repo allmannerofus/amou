@@ -148,7 +148,7 @@ export default function Footer() {
             <Logo size="lg" className="w-10 h-10" />
           </div>
           <div className="flex flex-col gap-[10px] items-center">
-            <p className="font-xanh-mono text-[20px] md:text-[24px] leading-[1.5] text-center max-w-[613px]" style={{ color: 'var(--text)' }}>
+            <p className="font-xanh-mono text-[22px] md:text-[24px] leading-[1.5] text-center max-w-[613px]" style={{ color: 'var(--text)' }}>
               For all work inquires:
             </p>
             <Link
@@ -167,8 +167,8 @@ export default function Footer() {
       {/* Weather & Music Section */}
       <div className="flex items-center justify-center pt-[60px] px-8 md:px-20 pb-[60px]">
         <div className="flex flex-col gap-[9px] items-center">
-          <p className="font-instrument-serif text-[20px] md:text-[25.965px] leading-[1.3] text-center max-w-[312px]" style={{ color: 'var(--text-tertiary)' }}>
-            The studio is <WeatherWidgetInline />, and we've been spinning:
+          <p className="font-instrument-serif text-[24px] md:text-[28px] leading-[1.3] text-center max-w-[312px]" style={{ color: 'var(--text-tertiary)' }}>
+            The studio is <WeatherWidgetInline />, and we've been&nbsp;spinning:
           </p>
           <div className="flex flex-col gap-[9px] items-center">
             <LastFmScrobblerInline />

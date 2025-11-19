@@ -14,6 +14,8 @@ interface PortfolioItem {
   hidden?: boolean
   featured?: boolean
   caseStudyUrl?: string
+  projectId?: string
+  category?: string
 }
 
 interface PortfolioOrganicProps {
@@ -33,20 +35,172 @@ export function PortfolioOrganic({ featuredOnly = false, limit }: PortfolioOrgan
     
     if (featuredOnly) {
       filtered = filtered.filter(item => item.featured)
-    }
-    
-    // Shuffle the array for random order (Fisher-Yates algorithm)
-    const shuffled = [...filtered]
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-    }
-    
-    // Limit if specified
-    if (limit) {
-      filtered = shuffled.slice(0, limit)
+      
+      // Step 1: Group by projectId (or fall back to client if projectId is not set)
+      // and randomly select one item per project
+      const projectGroups = new Map<string, PortfolioItem[]>()
+      filtered.forEach(item => {
+        const projectKey = item.projectId || item.client.toLowerCase().replace(/[^a-z0-9]/g, '-')
+        if (!projectGroups.has(projectKey)) {
+          projectGroups.set(projectKey, [])
+        }
+        projectGroups.get(projectKey)!.push(item)
+      })
+      
+      // Randomly select one item from each project group
+      const onePerProject = Array.from(projectGroups.values()).map(items => {
+        return items[Math.floor(Math.random() * items.length)]
+      })
+      
+      // Step 2: Prioritize getting one item per category, then resolve client conflicts
+      // Priority categories: music, hospitality, ai, game, brand, web3
+      const priorityCategories = ['music', 'hospitality', 'ai', 'game', 'brand', 'web3']
+      const categoryGroups = new Map<string, PortfolioItem[]>()
+      
+      onePerProject.forEach(item => {
+        if (item.category && priorityCategories.includes(item.category)) {
+          if (!categoryGroups.has(item.category)) {
+            categoryGroups.set(item.category, [])
+          }
+          categoryGroups.get(item.category)!.push(item)
+        }
+      })
+      
+      // Try to select one item per category, prioritizing items from clients not yet used
+      const selected: PortfolioItem[] = []
+      const usedClients = new Set<string>()
+      const selectedCategories = new Set<string>()
+      
+      // First pass: for each category, try to find an item from an unused client
+      priorityCategories.forEach(category => {
+        const items = categoryGroups.get(category) || []
+        if (items.length === 0) return
+        
+        // Try to find an item from an unused client
+        const available = items.filter(item => !usedClients.has(item.client.toLowerCase()))
+        const itemToAdd = available.length > 0 
+          ? available[Math.floor(Math.random() * available.length)]
+          : items[Math.floor(Math.random() * items.length)] // Fallback: use any item from this category
+        
+        selected.push(itemToAdd)
+        usedClients.add(itemToAdd.client.toLowerCase())
+        selectedCategories.add(category)
+      })
+      
+      // Step 3: Resolve any remaining client conflicts
+      // If a client appears multiple times, keep one item per client (prioritize keeping unique categories)
+      const clientGroups = new Map<string, PortfolioItem[]>()
+      selected.forEach(item => {
+        const clientKey = item.client.toLowerCase()
+        if (!clientGroups.has(clientKey)) {
+          clientGroups.set(clientKey, [])
+        }
+        clientGroups.get(clientKey)!.push(item)
+      })
+      
+      // First, collect all categories from items that don't have conflicts (single-item clients)
+      const categoriesFromOtherClients = new Set<string>()
+      clientGroups.forEach((items, clientKey) => {
+        if (items.length === 1) {
+          categoriesFromOtherClients.add(items[0].category || '')
+        }
+      })
+      
+      const resolved: PortfolioItem[] = []
+      const finalUsedClients = new Set<string>()
+      const finalCategories = new Set<string>()
+      
+      // Process single-item clients first
+      clientGroups.forEach((items, clientKey) => {
+        if (items.length === 1) {
+          resolved.push(items[0])
+          finalUsedClients.add(clientKey)
+          finalCategories.add(items[0].category || '')
+        }
+      })
+      
+      // Then process clients with conflicts, prioritizing items that add new categories
+      clientGroups.forEach((items, clientKey) => {
+        if (items.length > 1) {
+          // Find the item that adds a category not already represented
+          let bestItem = items.find(item => !categoriesFromOtherClients.has(item.category || '')) || items[0]
+          
+          // If multiple items would add new categories, prefer one not in finalCategories
+          for (const item of items) {
+            if (!categoriesFromOtherClients.has(item.category || '') && !finalCategories.has(item.category || '')) {
+              bestItem = item
+              break
+            }
+          }
+          
+          resolved.push(bestItem)
+          finalUsedClients.add(clientKey)
+          finalCategories.add(bestItem.category || '')
+        }
+      })
+      
+      // Try to fill any missing categories from remaining items
+      // Look at ALL items from projects, not just the selected ones
+      const missingCategories = priorityCategories.filter(cat => !finalCategories.has(cat))
+      if (missingCategories.length > 0 && resolved.length < 6) {
+        // Get all items from all projects (before the one-per-project selection)
+        const allProjectItems: PortfolioItem[] = []
+        projectGroups.forEach((items) => {
+          allProjectItems.push(...items)
+        })
+        
+        const remainingItems = allProjectItems.filter(item => 
+          item.category && 
+          missingCategories.includes(item.category) &&
+          !finalUsedClients.has(item.client.toLowerCase())
+        )
+        
+        // Group by category and add one per missing category
+        const remainingByCategory = new Map<string, PortfolioItem[]>()
+        remainingItems.forEach(item => {
+          if (!remainingByCategory.has(item.category!)) {
+            remainingByCategory.set(item.category!, [])
+          }
+          remainingByCategory.get(item.category!)!.push(item)
+        })
+        
+        missingCategories.forEach(category => {
+          if (resolved.length >= 6) return
+          const items = remainingByCategory.get(category) || []
+          if (items.length > 0) {
+            const selected = items[Math.floor(Math.random() * items.length)]
+            resolved.push(selected)
+            finalUsedClients.add(selected.client.toLowerCase())
+            finalCategories.add(category)
+          }
+        })
+      }
+      
+      filtered = resolved
+      
+      // Shuffle the final array for random order (Fisher-Yates algorithm)
+      const shuffled = [...filtered]
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+      }
+      
+      // Limit to 6 items maximum on home page
+      filtered = shuffled.slice(0, 6)
     } else {
-      filtered = shuffled
+      // Shuffle the array for random order (Fisher-Yates algorithm)
+      const shuffled = [...filtered]
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+      }
+      
+      // Limit if specified
+      if (limit) {
+        filtered = shuffled.slice(0, limit)
+      } else {
+        filtered = shuffled
+      }
     }
     
     setVisibleItems(filtered)

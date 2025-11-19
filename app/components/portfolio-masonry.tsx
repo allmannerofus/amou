@@ -13,6 +13,7 @@ interface PortfolioItem {
   aspectRatio?: 'portrait' | 'square' | 'landscape' | 'wide' | 'ultra-wide' // Optional - not used in masonry layout
   hidden?: boolean
   caseStudyUrl?: string
+  projectId?: string
 }
 
 // Portfolio data loaded from JSON file for easy management
