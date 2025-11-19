@@ -54,7 +54,7 @@
   --logo-color: #ffffff;
   
   /* Dark Mode Colors */
-  --background: #0E0F12;
+  --background: #050607;
   --raised: #2A2D36;
   --raised-tertiary: #1A1D26;
   --text: #FEFCF4;
@@ -127,6 +127,211 @@ body {
   animation: gradient-shift 8s ease-in-out infinite reverse;
 }
 
+/* Animated Gradient Underline for Links */
+@keyframes gradient-underline {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.gradient-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  animation: gradient-underline 8s ease-in-out infinite;
+}
+
+/* Gradient text and underline for nav links - underline and text gradient on hover only */
+.gradient-text-underline {
+  position: relative;
+  display: inline-block;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.gradient-text-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  animation: gradient-underline 8s ease-in-out infinite;
+  transition: width 0.3s ease;
+}
+
+.gradient-text-underline:hover {
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-underline 8s ease-in-out infinite;
+}
+
+.gradient-text-underline:hover::after {
+  width: 100%;
+}
+
+/* Gradient text on hover for regular links */
+.gradient-text-hover {
+  transition: all 0.3s ease;
+}
+
+.gradient-text-hover:hover {
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-underline 8s ease-in-out infinite;
+}
+
+/* Gradient text and underline on hover - for hero and footer links */
+.gradient-text-hover-link {
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.gradient-text-hover-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  animation: gradient-underline 8s ease-in-out infinite;
+}
+
+.gradient-text-hover-link:hover {
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-underline 8s ease-in-out infinite;
+}
+
+/* Animated Gradient Border - only the stroke color animates */
+@keyframes animate-gradient-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-border-button {
+  position: relative;
+  background: var(--background);
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+  isolation: isolate;
+}
+
+.gradient-border-button::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  animation: animate-gradient-border 8s ease-in-out infinite;
+  z-index: -2;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  padding: 1px;
+}
+
+.gradient-border-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: var(--background);
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+.gradient-border-button {
+  color: var(--text);
+}
+
+.gradient-border-button > * {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.gradient-border-button:hover {
+  color: var(--background);
+}
+
+.gradient-border-button:hover::after {
+  background: linear-gradient(90deg, 
+    #A4A4F1 0%, 
+    #E0D9C3 50%, 
+    #9B9581 74%, 
+    #21232B 100%);
+  background-size: 200% 100%;
+  animation: animate-gradient-border 8s ease-in-out infinite;
+}
+
 /* Faktum font utility classes */
 .font-faktum {
   font-family: var(--font-faktum-regular), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -155,6 +360,26 @@ body {
 /* DM Mono font utility classes */
 .font-dm-mono {
   font-family: var(--font-dm-mono), 'Courier New', Courier, monospace;
+}
+
+/* Xanh Mono font utility classes */
+.font-xanh-mono {
+  font-family: 'Xanh Mono', monospace;
+}
+
+/* VT323 font utility classes */
+.font-vt323 {
+  font-family: var(--font-vt323), 'VT323', 'Courier New', Courier, monospace !important;
+}
+
+/* Instrument Serif font utility classes */
+.font-instrument-serif {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+}
+
+/* Instrument Sans font utility classes */
+.font-instrument-sans {
+  font-family: var(--font-instrument-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .font-dm-mono-light {
@@ -529,6 +754,59 @@ div[style*="background-color: #333333"] {
   width: auto !important;
   max-width: none !important;
   display: block;
+}
+
+/* Infinite Scroll Animation for Client Logos */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.client-scroll-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.client-scroll-content {
+  display: flex;
+  animation: scroll-left 40s linear infinite;
+  will-change: transform;
+}
+
+.client-scroll-content:hover {
+  animation-play-state: paused;
+}
+
+.client-item {
+  flex-shrink: 0;
+  min-width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-logo-image {
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  opacity: 1;
+}
+
+/* Dark mode: white logos darken on hover */
+.dark .client-logo-image {
+  opacity: 1;
+}
+
+.dark .client-logo-image:hover {
+  opacity: 0.6;
+}
+
+/* Light mode: black logos lighten on hover */
+.client-logo-image:hover {
+  opacity: 0.6;
 }
 
 

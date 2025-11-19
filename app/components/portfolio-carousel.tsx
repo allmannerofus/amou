@@ -309,12 +309,16 @@ export function PortfolioCarousel() {
       const topSetCount = topImages.length / 2
       const bottomSetCount = bottomImages.length / 2
       
+      // Get the actual gap from computed style (responsive: 12px on mobile, up to 20px on desktop)
+      const topRowGap = parseInt(getComputedStyle(topRow).gap) || 20
+      const bottomRowGap = parseInt(getComputedStyle(bottomRow).gap) || 20
+      
       for (let i = 0; i < topSetCount; i++) {
-        topRowWidth += topImages[i].offsetWidth + 20 // 20px for gap
+        topRowWidth += topImages[i].offsetWidth + topRowGap
       }
       
       for (let i = 0; i < bottomSetCount; i++) {
-        bottomRowWidth += bottomImages[i].offsetWidth + 20 // 20px for gap
+        bottomRowWidth += bottomImages[i].offsetWidth + bottomRowGap
       }
 
       // Reset top row when it has scrolled one complete set width
@@ -352,7 +356,7 @@ export function PortfolioCarousel() {
   return (
     <div ref={containerRef} className="w-full overflow-hidden">
       {/* Top Row - Scrolls Left */}
-      <div ref={topRowRef} className="flex mb-4" style={{ transform: 'translateX(0)', gap: '20px' }}>
+      <div ref={topRowRef} className="flex mb-4" style={{ transform: 'translateX(0)', gap: 'clamp(12px, 4vw, 20px)' }}>
         {topRowImages.map((image) => (
           <div key={`top-${image.id}`} className="flex-shrink-0">
             <img
@@ -381,7 +385,7 @@ export function PortfolioCarousel() {
       </div>
 
       {/* Bottom Row - Scrolls Left */}
-      <div ref={bottomRowRef} className="flex" style={{ transform: 'translateX(0)', gap: '20px' }}>
+      <div ref={bottomRowRef} className="flex" style={{ transform: 'translateX(0)', gap: 'clamp(12px, 4vw, 20px)' }}>
         {bottomRowImages.map((image) => (
           <div key={`bottom-${image.id}`} className="flex-shrink-0">
             <img

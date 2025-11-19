@@ -6,7 +6,8 @@
     "title": "Dashboard for Independent AI",
     "client": "6079 AI",
     "metatags": ["Product Design", "Dashboard Design", "UX Design"],
-    "hidden": false
+    "hidden": false,
+    "featured": true
   },
   {
     "id": "2",
@@ -15,7 +16,8 @@
     "title": "Securing Independent AI",
     "client": "6079 AI",
     "metatags": ["Product Design", "Interface Design", "UX Design"],
-    "hidden": false
+    "hidden": false,
+    "featured": true
   },
   {
     "id": "3",
@@ -24,7 +26,8 @@
     "title": "NodeShifter iOS/Android and Web Game",
     "client": "6079 AI",
     "metatags": ["Product Design", "Interface Design", "UX Design"],
-    "hidden": false
+    "hidden": false,
+    "featured": true
   },
   {
     "id": "36",
@@ -52,6 +55,7 @@
     "client": "THINK Agents",
     "metatags": ["AI", "Platform Design", "Product Design"],
     "hidden": false,
+    "featured": true,
     "caseStudyUrl": "https://thinkagents.ai"
   },
   {
@@ -62,6 +66,7 @@
     "client": "THINK Agents",
     "metatags": ["Web3", "Dashboard Design", "UX Design"],
     "hidden": false,
+    "featured": true,
     "caseStudyUrl": "https://thinkagents.ai"
   },
   {
@@ -72,6 +77,7 @@
     "client": "THINK Agents",
     "metatags": ["Web3", "Interface Design", "Front-end Development"],
     "hidden": false,
+    "featured": true,
     "caseStudyUrl": "https://thinkagents.ai/claim"
   },
   {

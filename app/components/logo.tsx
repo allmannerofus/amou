@@ -65,10 +65,13 @@ export function WordmarkLogo({ size = 'md', className = '' }: WordmarkLogoProps)
     lg: 'w-40 h-10'
   }
 
+  // Use custom className if provided, otherwise use sizeClasses
+  const containerClasses = className ? className : sizeClasses[size]
+
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
-      <div className={`${sizeClasses[size]} ${className}`} style={{ backgroundColor: 'var(--background)' }} />
+      <div className={containerClasses} style={{ backgroundColor: 'var(--background)' }} />
     )
   }
 
@@ -76,13 +79,11 @@ export function WordmarkLogo({ size = 'md', className = '' }: WordmarkLogoProps)
   const logoSrc = resolvedTheme === 'dark' ? '/logo-wordmark-dark-mode.svg' : '/logo-wordmark-light-mode.svg'
 
   return (
-    <div className={`${sizeClasses[size]} ${className}`}>
-      <Image
+    <div className={containerClasses}>
+      <img
         src={logoSrc}
         alt="All Manner Of Us"
-        width={150}
-        height={36}
-        className="w-full h-auto transition-colors duration-200"
+        className="h-full w-auto transition-colors duration-200"
       />
     </div>
   )
