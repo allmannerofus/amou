@@ -4,8 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { DarkModeToggle } from './dark-mode-toggle'
-import { Logo } from './logo'
-import Image from 'next/image'
+import { WordmarkLogo } from './logo'
 import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
 
@@ -13,136 +12,116 @@ export function Navbar() {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // Determine which wordmark to use based on theme
-  const wordmarkSrc = resolvedTheme === 'dark' ? '/logo-wordmark-dark-mode.svg' : '/logo-wordmark-light-mode.svg'
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
-      <header className="relative">
+      <header className="sticky top-0 z-[60]" style={{ 
+        background: 'linear-gradient(to bottom, rgba(254, 252, 244, 1) 0%, rgba(254, 252, 244, 1) 40%, rgba(254, 252, 244, 0.98) 50%, rgba(254, 252, 244, 0.95) 60%, rgba(254, 252, 244, 0.85) 70%, rgba(254, 252, 244, 0.7) 80%, rgba(254, 252, 244, 0.5) 85%, rgba(254, 252, 244, 0.3) 90%, rgba(254, 252, 244, 0.15) 95%, rgba(254, 252, 244, 0) 100%)',
+        paddingBottom: '120px'
+      }}>
         {/* Gradient Strip at Top */}
-        <div className="gradient-bar h-2 w-full"></div>
+        <div className="gradient-bar h-[8px] w-full" />
         
-        <nav className="flex items-center justify-between pt-8 md:pt-[100px] pb-6 px-8 md:px-20" style={{ backgroundColor: 'var(--background)' }}>
-          {/* Left side - Logo and Name */}
-          <div className="flex items-center gap-4">
-            {/* Desktop & Tablet: Full name + tagline (md and above) */}
-            <div className="hidden md:block text-4xl md:text-5xl font-faktum-medium tracking-tight mb-4 no-underline hover:no-underline" style={{ color: 'var(--text-secondary)' }}>
-              All Manner Of Us
-              <div className="text-base font-faktum-regular tracking-normal mt-2" style={{ color: 'var(--text-tertiary)' }}>
-                A creative studio for the future of work.
-              </div>
+        <nav className="flex items-center justify-between pt-[20px] pb-0 px-8 md:px-20 border-b border-transparent relative z-50">
+          <Link 
+            href="/" 
+            className="no-underline hover:no-underline active:no-underline focus:no-underline focus:outline-none"
+          >
+            <WordmarkLogo className="h-[24px] md:h-[18px] lg:h-[24px] w-auto" />
+          </Link>
+          <div className="flex items-center gap-[20px]">
+            <div className="flex items-center justify-center">
+              <DarkModeToggle />
             </div>
-            
-            {/* Mobile: Just the icon logo (below md) */}
-            <Logo size="md" className="w-10 h-10 md:hidden" />
-          </div>
-          
-          {/* Right side - Theme Toggle and Logo */}
-          <div className="flex items-center gap-4">
-            <DarkModeToggle />
-            <Logo size="md" className="w-10 h-10 hidden md:block" />
+          <Link
+            href="mailto:zach@allmannerofus.com?subject=Let's work together"
+            className="px-[15px] py-[5px] rounded-[2px] font-vt323 text-base md:text-lg uppercase leading-[1.5] transition-colors gradient-border-button"
+          >
+            Let's work together
+          </Link>
           </div>
         </nav>
       </header>
     )
   }
 
+  const bgColor = resolvedTheme === 'dark' ? '5, 6, 7' : '254, 252, 244'
+  
   return (
-    <header className="fixed md:relative top-0 left-0 right-0 z-50 md:z-auto">
+      <header className="sticky top-0 z-[60]" style={{ 
+        background: `linear-gradient(to bottom, rgba(${bgColor}, 1) 0%, rgba(${bgColor}, 1) 40%, rgba(${bgColor}, 0.98) 50%, rgba(${bgColor}, 0.95) 60%, rgba(${bgColor}, 0.85) 70%, rgba(${bgColor}, 0.7) 80%, rgba(${bgColor}, 0.5) 85%, rgba(${bgColor}, 0.3) 90%, rgba(${bgColor}, 0.15) 95%, rgba(${bgColor}, 0) 100%)`,
+        paddingBottom: '120px',
+        pointerEvents: 'none'
+      }}>
       {/* Gradient Strip at Top */}
-      <div className="gradient-bar h-2 w-full"></div>
+      <div className="gradient-bar h-[8px] w-full" />
       
-      <nav className="flex items-center justify-between pt-8 md:pt-[100px] pb-6 px-8 md:px-20 relative z-50" style={{ backgroundColor: 'var(--background)' }}>
-        {/* Left side - Logo and Wordmark */}
-        <div className="flex items-center gap-4 md:items-center">
-          {/* Desktop & Tablet: Full logo + tagline (md and above) */}
-          <div className="hidden md:flex md:flex-col md:items-start md:justify-center">
-            <Link href="/" className="no-underline hover:no-underline">
-              <Image
-                src={wordmarkSrc}
-                alt="All Manner Of Us"
-                width={200}
-                height={48}
-                className="h-12 w-auto transition-colors duration-200"
-              />
-            </Link>
-            <div className="text-base font-faktum-regular tracking-normal mt-2" style={{ color: 'var(--text-tertiary)' }}>
-              A creative studio for the future of work.
-            </div>
-          </div>
-          
-          {/* Mobile: Just the icon logo (below md) */}
-          <div className="md:hidden">
-            <Link href="/">
-              <Logo size="md" className="w-12 h-12" />
-            </Link>
-          </div>
-        </div>
+      <nav className={`relative flex items-center justify-between px-8 md:px-20 border-b border-transparent transition-all duration-300 ${isScrolled ? 'pt-2 md:pt-[20px] pb-0' : 'pt-[20px] pb-0'}`} style={{ marginBottom: '-120px', zIndex: 50, pointerEvents: 'auto' }}>
+        {/* Left - Brand Name */}
+        <Link 
+          href="/" 
+          className="relative z-50 no-underline hover:no-underline active:no-underline focus:no-underline focus:outline-none"
+          style={{ pointerEvents: 'auto' }}
+        >
+          <WordmarkLogo className="h-[24px] md:h-[18px] lg:h-[24px] w-auto" />
+        </Link>
         
-        {/* Right side - Desktop Navigation and Toggle */}
-        <div className="hidden md:flex items-center gap-6">
-          <Link 
-            href="/" 
-            className={`transition-colors hover:underline ${
-              pathname === '/' ? 'font-medium' : ''
-            }`}
-            style={{ 
-              color: pathname === '/' ? 'var(--primary)' : 'var(--text-secondary)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = 'var(--primary)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = pathname === '/' ? 'var(--primary)' : 'var(--text-secondary)'
-            }}
-          >
-            About
-          </Link>
+        {/* Center - Navigation Links (Desktop only) */}
+        <div className="hidden md:flex items-center justify-evenly flex-1 relative z-50" style={{ pointerEvents: 'auto' }}>
           <Link 
             href="/portfolio" 
-            className={`transition-colors hover:underline ${
-              pathname === '/portfolio' ? 'font-medium' : ''
-            }`}
-            style={{ 
-              color: pathname === '/portfolio' ? 'var(--primary)' : 'var(--text-secondary)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = 'var(--primary)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = pathname === '/portfolio' ? 'var(--primary)' : 'var(--text-secondary)'
-            }}
+            className="font-vt323 text-base md:text-lg uppercase leading-[1.5] gradient-text-underline relative z-50"
+            style={{ pointerEvents: 'auto' }}
           >
             Portfolio
           </Link>
           <Link 
-            href="mailto:hi@allmannerofus.com" 
-            className="transition-colors hover:underline"
-            style={{ color: 'var(--text-secondary)' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = 'var(--primary)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = 'var(--text-secondary)'
-            }}
+            href="/" 
+            className="font-vt323 text-base md:text-lg uppercase leading-[1.5] gradient-text-underline relative z-50"
+            style={{ pointerEvents: 'auto' }}
+          >
+            About
+          </Link>
+          <Link 
+            href="mailto:zach@allmannerofus.com" 
+            className="font-vt323 text-base md:text-lg uppercase leading-[1.5] gradient-text-underline relative z-50"
+            style={{ pointerEvents: 'auto' }}
           >
             Email
           </Link>
-          <DarkModeToggle />
         </div>
-
-        {/* Mobile - Toggle and Hamburger */}
-        <div className="flex items-center gap-2 md:hidden">
-          <DarkModeToggle />
+        
+        {/* Right - Dark Mode Toggle & CTA */}
+        <div className="flex items-center gap-[20px] relative z-50">
+          <div className="flex items-center justify-center">
+            <DarkModeToggle />
+          </div>
+          <Link
+            href="mailto:zach@allmannerofus.com?subject=Let's work together"
+            className="hidden md:block px-[15px] py-[5px] rounded-[2px] font-vt323 text-base md:text-lg uppercase leading-[1.5] transition-colors gradient-border-button"
+          >
+            Let's work together
+          </Link>
+          
+          {/* Mobile Menu Button */}
           <button
-            className="p-1 w-10 h-10 flex items-center justify-center relative"
+            className="md:hidden p-1 w-10 h-10 flex items-center justify-center relative"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             style={{ color: 'var(--text)' }}
@@ -166,94 +145,110 @@ export function Navbar() {
       </nav>
 
       {/* Mobile Navigation Menu */}
-      <div className={`md:hidden fixed inset-0 z-30 transition-opacity duration-200 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        {/* Background that drops to bottom of viewport, but starts below header */}
-        <div 
-          className="fixed left-0 right-0 bottom-0"
-          style={{ 
-            top: '80px', // Start below the header area
-            backgroundColor: 'var(--background)' 
-          }}
-          onClick={() => setIsMobileMenuOpen(false)}
-        ></div>
-        
-        {/* Menu items that fade in one by one */}
-        <div className="fixed left-0 right-0 bottom-0 z-40 px-8 py-6 space-y-4" style={{ 
-          top: isMobileMenuOpen ? 'calc(5rem + 8px)' : '5rem',
-          transition: 'top 0.2s ease-out',
-          pointerEvents: isMobileMenuOpen ? 'auto' : 'none'
-        }}>
-          <Link 
-            href="/" 
-            className={`block transition-colors mobile-nav-link ${
-              pathname === '/' 
-                ? 'font-medium cursor-default' 
-                : 'cursor-pointer'
-            }`}
+      {isMobileMenuOpen && (
+        <>
+          <div 
+            className="md:hidden fixed inset-0 z-30"
             style={{ 
-              color: pathname === '/' ? 'var(--primary)' : 'var(--text-secondary)',
-              textDecoration: pathname === '/' ? 'none !important' : 'none !important',
-              backgroundColor: 'transparent !important',
-              outline: 'none !important',
-              border: 'none !important',
-              boxShadow: 'none !important',
-              pointerEvents: pathname === '/' ? 'none' : 'auto',
-              opacity: isMobileMenuOpen ? 1 : 0,
-              transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(10px)',
-              transition: 'opacity 0.4s ease-out 0.1s, transform 0.4s ease-out 0.1s'
+              top: '100px',
+              backgroundColor: 'var(--background)',
+              pointerEvents: 'auto'
             }}
-            onClick={() => {
-              // Close menu immediately
-              setIsMobileMenuOpen(false)
+            onClick={() => setIsMobileMenuOpen(false)}
+          ></div>
+          
+          <div 
+            className="md:hidden fixed left-0 right-0 bottom-0 z-50 px-8 py-6 space-y-4" 
+            style={{ 
+              top: '120px',
+              pointerEvents: 'auto'
+            }}
+            onClick={(e) => {
+              // Only close menu if clicking the background, not the links
+              if (e.target === e.currentTarget) {
+                setIsMobileMenuOpen(false)
+              }
             }}
           >
-            About
-          </Link>
           <Link 
             href="/portfolio" 
-            className={`block transition-colors mobile-nav-link ${
-              pathname === '/portfolio' 
-                ? 'font-medium cursor-default' 
-                : 'cursor-pointer'
-            }`}
-            style={{ 
-              color: pathname === '/portfolio' ? 'var(--primary)' : 'var(--text-secondary)',
-              textDecoration: pathname === '/portfolio' ? 'none !important' : 'none !important',
-              backgroundColor: 'transparent !important',
-              outline: 'none !important',
-              border: 'none !important',
-              boxShadow: 'none !important',
-              pointerEvents: pathname === '/portfolio' ? 'none' : 'auto',
-              opacity: isMobileMenuOpen ? 1 : 0,
-              transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(10px)',
-              transition: 'opacity 0.4s ease-out 0.2s, transform 0.4s ease-out 0.2s'
+            className="block transition-colors mobile-nav-link font-vt323 text-lg uppercase"
+            style={{
+              color: pathname === '/portfolio' ? 'var(--primary)' : 'var(--text)',
+              transition: 'color 0.2s',
+              pointerEvents: 'auto',
+              position: 'relative',
+              zIndex: 60
             }}
-            onClick={() => {
-              // Close menu immediately
+            onMouseEnter={(e) => {
+              if (pathname !== '/portfolio') {
+                e.currentTarget.style.color = 'var(--primary)'
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = pathname === '/portfolio' ? 'var(--primary)' : 'var(--text)'
+            }}
+            onClick={(e) => {
               setIsMobileMenuOpen(false)
+              // Allow the link navigation to proceed
+              e.stopPropagation()
             }}
           >
             Portfolio
           </Link>
           <Link 
-            href="mailto:hi@allmannerofus.com" 
-            className="block transition-colors mobile-nav-link"
-            style={{ 
-              color: 'var(--text-secondary)',
-              backgroundColor: 'transparent !important',
-              outline: 'none !important',
-              border: 'none !important',
-              boxShadow: 'none !important',
-              opacity: isMobileMenuOpen ? 1 : 0,
-              transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(10px)',
-              transition: 'opacity 0.4s ease-out 0.3s, transform 0.4s ease-out 0.3s'
+            href="/" 
+            className="block transition-colors mobile-nav-link font-vt323 text-lg uppercase"
+            style={{
+              color: pathname === '/' ? 'var(--primary)' : 'var(--text)',
+              transition: 'color 0.2s',
+              pointerEvents: 'auto',
+              position: 'relative',
+              zIndex: 60
             }}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onMouseEnter={(e) => {
+              if (pathname !== '/') {
+                e.currentTarget.style.color = 'var(--primary)'
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = pathname === '/' ? 'var(--primary)' : 'var(--text)'
+            }}
+            onClick={(e) => {
+              setIsMobileMenuOpen(false)
+              // Allow the link navigation to proceed
+              e.stopPropagation()
+            }}
+          >
+            About
+          </Link>
+          <Link 
+            href="mailto:zach@allmannerofus.com" 
+            className="block transition-colors mobile-nav-link font-vt323 text-lg uppercase"
+            style={{
+              color: 'var(--text)',
+              transition: 'color 0.2s',
+              pointerEvents: 'auto',
+              position: 'relative',
+              zIndex: 60
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--primary)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--text)'
+            }}
+            onClick={(e) => {
+              setIsMobileMenuOpen(false)
+              // Allow the link navigation to proceed
+              e.stopPropagation()
+            }}
           >
             Email
           </Link>
         </div>
-      </div>
+        </>
+      )}
     </header>
   )
 }

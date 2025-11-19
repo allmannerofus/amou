@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--background)', color: 'var(--text)' }}>
       {/* Header */}
       <header className="flex items-center justify-between py-6 px-8">
         <div className="flex items-center gap-4">

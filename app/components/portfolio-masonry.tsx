@@ -96,7 +96,7 @@ export function PortfolioMasonry() {
   }, [visibleItems])
 
   return (
-    <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+    <div className="columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
       {visibleItems.map((item) => {
         const CardContent = () => (
           <>
@@ -135,17 +135,17 @@ export function PortfolioMasonry() {
             {/* Content */}
             <div className="px-0 py-4">
               {/* Title */}
-              <h3 className="text-lg font-faktum-medium mb-2" style={{ color: 'var(--text)' }}>
+              <p className="font-instrument-serif text-base md:text-lg uppercase leading-[1.5] mb-2" style={{ color: 'var(--text)' }}>
                 {item.title}
-              </h3>
+              </p>
               
               {/* Client Name */}
-              <h4 className="text-sm font-faktum-medium mb-1" style={{ color: 'var(--text-secondary)' }}>
+              <p className="font-vt323 text-base uppercase mb-1" style={{ color: 'var(--text-tertiary)' }}>
                 {item.client}
-              </h4>
+              </p>
               
               {/* Metatags */}
-              <p className="text-xs font-mono uppercase" style={{ color: 'var(--text-tertiary)' }}>
+              <p className="font-vt323 text-base capitalize" style={{ color: 'var(--text-tertiary)' }}>
                 {item.metatags.join(', ')}
               </p>
             </div>
@@ -161,7 +161,7 @@ export function PortfolioMasonry() {
               if (el) itemRefs.current.set(item.id, el)
             }}
             data-item-id={item.id}
-            className={`break-inside-avoid mb-6 transition-opacity duration-700 ease-out ${
+            className={`break-inside-avoid mb-4 md:mb-6 transition-opacity duration-700 ease-out ${
               isRevealed ? 'opacity-100' : 'opacity-0'
             }`}
             style={{

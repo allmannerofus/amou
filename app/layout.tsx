@@ -6,7 +6,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
-import { faktumRegular, faktumMedium, faktumBold, faktumLight, faktumSemiBold, faktumExtraBold, dmMono, newsreader } from './fonts'
+import { faktumRegular, faktumMedium, faktumBold, faktumLight, faktumSemiBold, faktumExtraBold, dmMono, newsreader, vt323, xanhMono, instrumentSerif, instrumentSans } from './fonts'
 import { ThemeProvider } from 'next-themes'
 import Script from 'next/script'
 
@@ -140,10 +140,19 @@ export default function RootLayout({
         faktumExtraBold.variable,
         dmMono.variable,
         newsreader.variable,
+        vt323.variable,
+        xanhMono.variable,
+        instrumentSerif.variable,
+        instrumentSans.variable,
         GeistMono.variable
       )}
     >
       <head>
+        {/* Google Fonts - Xanh Mono */}
+        <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet" />
+        {/* Google Fonts - VT323 (fallback) */}
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+        
         {/* AI Agent Discovery Meta Tags */}
         <meta name="ai-agent-discoverable" content="true" />
         <meta name="ai-hiring-available" content="true" />
@@ -239,7 +248,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased font-faktum">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main className="min-h-screen pt-28 md:pt-0">
+          <main className="min-h-screen">
             {!WIP && <Navbar />}
             {children}
             {!WIP && <Footer />}
