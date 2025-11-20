@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 import portfolioData from '../lib/portfolio.json'
 
 interface PortfolioItem {
@@ -100,9 +101,9 @@ export function PortfolioMasonry() {
     <div className="columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
       {visibleItems.map((item) => {
         const CardContent = () => (
-          <>
+          <div className="group">
             {/* Image with hover overlay */}
-            <div className="relative w-full group">
+            <div className="relative w-full">
               <img
                 src={item.src}
                 alt={item.alt}
@@ -112,22 +113,14 @@ export function PortfolioMasonry() {
                 fetchPriority={visibleItems.indexOf(item) < 6 ? "high" : "low"}
               />
               
-              {/* Hover overlay for case studies */}
+              {/* Dim overlay */}
+              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
+              
+              {/* View Case Study button */}
               {item.caseStudyUrl && (
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div 
-                    className="px-6 py-3 rounded-full flex items-center gap-2 transition-colors duration-200 hover:bg-[#21232B]"
-                    style={{ 
-                      backgroundColor: 'rgba(14, 15, 18, 0.95)',
-                      color: '#f8f8f8',
-                      fontWeight: '500'
-                    }}
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                    <span className="text-sm font-faktum-medium">VIEW LIVE SITE</span>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="px-[15px] py-[5px] rounded-[2px] font-vt323 text-base md:text-lg uppercase leading-[1.5] transition-colors gradient-border-button">
+                    {item.caseStudyUrl.startsWith('/') ? 'VIEW CASE STUDY' : 'VIEW LIVE SITE'}
                   </div>
                 </div>
               )}
@@ -136,21 +129,21 @@ export function PortfolioMasonry() {
             {/* Content */}
             <div className="px-0 py-4">
               {/* Title */}
-              <p className="font-instrument-serif text-base md:text-lg uppercase leading-[1.5] mb-2" style={{ color: 'var(--text)' }}>
+              <p className="font-instrument-serif text-base md:text-lg uppercase leading-[1.5] mb-2 no-underline" style={{ color: 'var(--text)' }}>
                 {item.title}
               </p>
               
               {/* Client Name */}
-              <p className="font-vt323 text-base uppercase mb-1" style={{ color: 'var(--text-tertiary)' }}>
+              <p className="font-vt323 text-base uppercase mb-1 no-underline" style={{ color: 'var(--text-tertiary)' }}>
                 {item.client}
               </p>
               
               {/* Metatags */}
-              <p className="font-vt323 text-base capitalize" style={{ color: 'var(--text-tertiary)' }}>
+              <p className="font-vt323 text-base capitalize no-underline" style={{ color: 'var(--text-tertiary)' }}>
                 {item.metatags.join(', ')}
               </p>
             </div>
-          </>
+          </div>
         )
 
         const isRevealed = revealedItems.has(item.id)
@@ -171,14 +164,25 @@ export function PortfolioMasonry() {
             }}
           >
             {item.caseStudyUrl ? (
-              <a
-                href={item.caseStudyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block cursor-pointer no-underline hover:no-underline"
-              >
-                <CardContent />
-              </a>
+              item.caseStudyUrl.startsWith('/') ? (
+                <Link
+                  href={item.caseStudyUrl}
+                  className="block cursor-pointer no-underline hover:no-underline"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <CardContent />
+                </Link>
+              ) : (
+                <a
+                  href={item.caseStudyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block cursor-pointer no-underline hover:no-underline"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <CardContent />
+                </a>
+              )
             ) : (
               <CardContent />
             )}

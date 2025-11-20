@@ -13,7 +13,8 @@
     "hidden": false,
     "featured": true,
     "projectId": "6079-ai-platform",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/6079-ai"
   },
   {
     "id": "2",
@@ -29,7 +30,8 @@
     "hidden": false,
     "featured": true,
     "projectId": "6079-ai-platform",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/6079-ai"
   },
   {
     "id": "3",
@@ -45,7 +47,8 @@
     "hidden": false,
     "featured": true,
     "projectId": "6079-ai-platform",
-    "category": "game"
+    "category": "game",
+    "caseStudyUrl": "/case-studies/6079-ai"
   },
   {
     "id": "36",
@@ -60,7 +63,8 @@
     ],
     "hidden": false,
     "projectId": "6079-ai-platform",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/6079-ai"
   },
   {
     "id": "37",
@@ -75,7 +79,8 @@
     ],
     "hidden": false,
     "projectId": "6079-ai-platform",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/6079-ai"
   },
   {
     "id": "4",
@@ -90,7 +95,7 @@
     ],
     "hidden": false,
     "featured": true,
-    "caseStudyUrl": "https://thinkagents.ai",
+    "caseStudyUrl": "/case-studies/think-agents",
     "projectId": "think-agents-platform",
     "category": "ai"
   },
@@ -107,7 +112,7 @@
     ],
     "hidden": false,
     "featured": true,
-    "caseStudyUrl": "https://thinkagents.ai",
+    "caseStudyUrl": "/case-studies/think-agents",
     "projectId": "think-agents-platform",
     "category": "web3"
   },
@@ -124,7 +129,7 @@
     ],
     "hidden": false,
     "featured": true,
-    "caseStudyUrl": "https://thinkagents.ai/claim",
+    "caseStudyUrl": "/case-studies/think-agents",
     "projectId": "think-agents-token-claim",
     "category": "web3"
   },
@@ -139,7 +144,7 @@
       "Interface Design"
     ],
     "hidden": false,
-    "caseStudyUrl": "https://thinkagents.ai/products/thinkubator",
+    "caseStudyUrl": "/case-studies/think-agents",
     "projectId": "think-agents-thinkubator",
     "category": null
   },
@@ -155,7 +160,7 @@
       "Front-end Development"
     ],
     "hidden": false,
-    "caseStudyUrl": "https://thinkagents.ai/claim",
+    "caseStudyUrl": "/case-studies/think-agents",
     "projectId": "think-agents-token-claim",
     "category": "web3"
   },
@@ -171,7 +176,7 @@
       "Front-end Development"
     ],
     "hidden": false,
-    "caseStudyUrl": "https://thinkagents.ai/claim",
+    "caseStudyUrl": "/case-studies/think-agents",
     "projectId": "think-agents-token-claim",
     "category": "web3"
   },
@@ -188,7 +193,8 @@
     ],
     "hidden": false,
     "projectId": "souls-platform",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/souls"
   },
   {
     "id": "12",
@@ -203,7 +209,8 @@
     ],
     "hidden": false,
     "projectId": "souls-platform",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/souls"
   },
   {
     "id": "13",
@@ -218,7 +225,8 @@
     ],
     "hidden": false,
     "projectId": "souls-platform",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/souls"
   },
   {
     "id": "39",
@@ -233,7 +241,8 @@
     ],
     "hidden": false,
     "projectId": "souls-marketing",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/souls"
   },
   {
     "id": "38",
@@ -247,7 +256,7 @@
       "Studio Design"
     ],
     "hidden": false,
-    "caseStudyUrl": "https://monkz.xyz/studio",
+    "caseStudyUrl": "/case-studies/mindful-monkz",
     "projectId": "mindful-monkz",
     "category": null
   },
@@ -264,7 +273,8 @@
     ],
     "hidden": false,
     "projectId": "thinkos-browser",
-    "category": null
+    "category": null,
+    "caseStudyUrl": "/case-studies/thinkos"
   },
   {
     "id": "16",
@@ -279,7 +289,8 @@
     ],
     "hidden": false,
     "projectId": "thinkos-extension",
-    "category": null
+    "category": null,
+    "caseStudyUrl": "/case-studies/thinkos"
   },
   {
     "id": "17",
@@ -294,7 +305,8 @@
     ],
     "hidden": false,
     "projectId": "thinkos-extension",
-    "category": null
+    "category": null,
+    "caseStudyUrl": "/case-studies/thinkos"
   },
   {
     "id": "18",
@@ -308,7 +320,8 @@
     ],
     "hidden": false,
     "projectId": "wire-network",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/wire-network"
   },
   {
     "id": "19",
@@ -321,7 +334,7 @@
       "UX Design"
     ],
     "hidden": false,
-    "caseStudyUrl": "https://independentai.institute",
+    "caseStudyUrl": "/case-studies/independent-ai-institute",
     "projectId": "independent-ai-institute",
     "category": "ai"
   },
@@ -338,7 +351,8 @@
     ],
     "hidden": false,
     "projectId": "mor-org",
-    "category": "web3"
+    "category": "web3",
+    "caseStudyUrl": "/case-studies/mororg"
   },
   {
     "id": "21",
@@ -354,7 +368,8 @@
     "hidden": false,
     "featured": true,
     "projectId": "indeed",
-    "category": "brand"
+    "category": "brand",
+    "caseStudyUrl": "/case-studies/indeed"
   },
   {
     "id": "22",
@@ -369,7 +384,8 @@
     ],
     "hidden": false,
     "projectId": "hca-healthcare",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/hca-healthcare"
   },
   {
     "id": "23",
@@ -383,7 +399,8 @@
     ],
     "hidden": false,
     "projectId": "underoath",
-    "category": "music"
+    "category": "music",
+    "caseStudyUrl": "/case-studies/underoath"
   },
   {
     "id": "24",
@@ -398,7 +415,8 @@
     ],
     "hidden": false,
     "projectId": "son-lux",
-    "category": "music"
+    "category": "music",
+    "caseStudyUrl": "/case-studies/son-lux"
   },
   {
     "id": "25",
@@ -413,7 +431,8 @@
     ],
     "hidden": false,
     "projectId": "wistia-talking-too-loud",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/wistia"
   },
   {
     "id": "26",
@@ -426,7 +445,7 @@
       "Art Direction"
     ],
     "hidden": false,
-    "caseStudyUrl": "https://wistia.com/series/talking-too-loud",
+    "caseStudyUrl": "/case-studies/wistia",
     "projectId": "wistia-talking-too-loud",
     "category": null
   },
@@ -443,7 +462,8 @@
     ],
     "hidden": false,
     "projectId": "avaere",
-    "category": "brand"
+    "category": "brand",
+    "caseStudyUrl": "/case-studies/avaere"
   },
   {
     "id": "29",
@@ -456,7 +476,8 @@
     ],
     "hidden": false,
     "projectId": "w-co",
-    "category": null
+    "category": null,
+    "caseStudyUrl": "/case-studies/w-co"
   },
   {
     "id": "30",
@@ -471,7 +492,8 @@
     ],
     "hidden": false,
     "projectId": "lemburg-house",
-    "category": "brand"
+    "category": "brand",
+    "caseStudyUrl": "/case-studies/lemburg-house"
   },
   {
     "id": "31",
@@ -487,7 +509,8 @@
     "hidden": false,
     "featured": true,
     "projectId": "jane-s-dine-inn",
-    "category": "hospitality"
+    "category": "hospitality",
+    "caseStudyUrl": "/case-studies/janes-dine-inn"
   },
   {
     "id": "32",
@@ -503,7 +526,8 @@
     "hidden": false,
     "featured": true,
     "projectId": "hammock",
-    "category": "music"
+    "category": "music",
+    "caseStudyUrl": "/case-studies/hammock"
   },
   {
     "id": "33",
@@ -518,7 +542,8 @@
     ],
     "hidden": false,
     "projectId": "mutemath",
-    "category": "music"
+    "category": "music",
+    "caseStudyUrl": "/case-studies/mutemath"
   },
   {
     "id": "34",
@@ -533,7 +558,8 @@
     ],
     "hidden": false,
     "projectId": "creative-market",
-    "category": "ai"
+    "category": "ai",
+    "caseStudyUrl": "/case-studies/creative-market"
   },
   {
     "id": "35",
@@ -547,6 +573,7 @@
     ],
     "hidden": false,
     "projectId": "oakwood-public-market",
-    "category": "hospitality"
+    "category": "hospitality",
+    "caseStudyUrl": "/case-studies/oakwood-public-market"
   }
 ]

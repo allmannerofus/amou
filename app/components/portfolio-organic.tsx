@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import Link from 'next/link'
 import portfolioData from '../lib/portfolio.json'
 
 interface PortfolioItem {
@@ -335,6 +336,53 @@ export function PortfolioOrganic({ featuredOnly = false, limit }: PortfolioOrgan
       }
     }, [])
 
+    const cardContent = (
+      <div className="flex flex-col gap-[4px] group">
+        <div className="relative w-full overflow-hidden">
+          <img
+            ref={(el) => {
+              if (el) imageRefs.current.set(item.id, el)
+            }}
+            src={item.src}
+            alt={item.alt}
+            className="w-full h-auto object-contain"
+            style={{
+              opacity: 1,
+              filter: isVisible ? 'blur(0px)' : 'blur(20px)',
+              transition: 'filter 0.7s ease-out',
+            }}
+            loading={index < 6 ? "eager" : "lazy"}
+            decoding="async"
+            fetchPriority={index < 6 ? "high" : "low"}
+          />
+          {/* Dim overlay */}
+          <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
+          {/* View Case Study button - only show if caseStudyUrl exists */}
+          {item.caseStudyUrl && (
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <div className="px-[15px] py-[5px] rounded-[2px] font-vt323 text-base md:text-lg uppercase leading-[1.5] transition-colors gradient-border-button">
+                {item.caseStudyUrl.startsWith('/') ? 'VIEW CASE STUDY' : 'VIEW LIVE SITE'}
+              </div>
+            </div>
+          )}
+        </div>
+        
+        <div className="flex flex-col gap-[4px]">
+          <div className="flex flex-col md:flex-row gap-[6px] md:gap-[10px] items-start">
+            <p className="font-instrument-serif text-base md:text-lg uppercase leading-[1.5] tracking-[0.2052px] no-underline" style={{ color: 'var(--text)' }}>
+              {item.title}
+            </p>
+            <p className="font-vt323 text-base uppercase no-underline" style={{ color: 'var(--text-tertiary)' }}>
+              {item.client}
+            </p>
+          </div>
+          <p className="font-vt323 text-base capitalize mt-[-2px] no-underline" style={{ color: 'var(--text-tertiary)' }}>
+            {item.metatags?.join(', ')}
+          </p>
+        </div>
+      </div>
+    )
+
     return (
       <div
         ref={(el) => {
@@ -346,41 +394,17 @@ export function PortfolioOrganic({ featuredOnly = false, limit }: PortfolioOrgan
         data-item-id={item.id}
         className={`col-span-1 ${columnSpan}`}
       >
-        <div className="flex flex-col gap-[4px]">
-          <div className="relative w-full overflow-hidden group">
-            <img
-              ref={(el) => {
-                if (el) imageRefs.current.set(item.id, el)
-              }}
-              src={item.src}
-              alt={item.alt}
-              className="w-full h-auto object-contain"
-              style={{
-                opacity: 1,
-                filter: isVisible ? 'blur(0px)' : 'blur(20px)',
-                transition: 'filter 0.7s ease-out',
-              }}
-              loading={index < 6 ? "eager" : "lazy"}
-              decoding="async"
-              fetchPriority={index < 6 ? "high" : "low"}
-            />
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
-          </div>
-          
-          <div className="flex flex-col gap-[4px]">
-            <div className="flex flex-col md:flex-row gap-[6px] md:gap-[10px] items-start">
-              <p className="font-instrument-serif text-base md:text-lg uppercase leading-[1.5] tracking-[0.2052px]" style={{ color: 'var(--text)' }}>
-                {item.title}
-              </p>
-              <p className="font-vt323 text-base uppercase" style={{ color: 'var(--text-tertiary)' }}>
-                {item.client}
-              </p>
-            </div>
-            <p className="font-vt323 text-base capitalize mt-[-2px]" style={{ color: 'var(--text-tertiary)' }}>
-              {item.metatags?.join(', ')}
-            </p>
-          </div>
-        </div>
+        {item.caseStudyUrl ? (
+          <Link 
+            href={item.caseStudyUrl}
+            className="block cursor-pointer no-underline hover:no-underline"
+            style={{ textDecoration: 'none' }}
+          >
+            {cardContent}
+          </Link>
+        ) : (
+          cardContent
+        )}
       </div>
     )
   }

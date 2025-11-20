@@ -43,7 +43,7 @@ export function Navbar() {
             href="/" 
             className="no-underline hover:no-underline active:no-underline focus:no-underline focus:outline-none"
           >
-            <WordmarkLogo className="h-[24px] md:h-[18px] lg:h-[24px] w-auto" />
+            <WordmarkLogo className="h-[20px] md:h-[18px] lg:h-[24px] w-auto" />
           </Link>
           <div className="flex items-center gap-[20px]">
             <div className="flex items-center justify-center">
@@ -79,7 +79,7 @@ export function Navbar() {
           className="relative z-50 no-underline hover:no-underline active:no-underline focus:no-underline focus:outline-none"
           style={{ pointerEvents: 'auto' }}
         >
-          <WordmarkLogo className="h-[24px] md:h-[18px] lg:h-[24px] w-auto" />
+          <WordmarkLogo className="h-[21.6px] md:h-[18px] lg:h-[24px] w-auto" />
         </Link>
         
         {/* Center - Navigation Links (Desktop only) */}

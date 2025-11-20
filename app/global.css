@@ -46,6 +46,12 @@
   --signature-filter: brightness(0) saturate(100%) invert(27%) sepia(8%) saturate(1234%) hue-rotate(202deg) brightness(94%) contrast(86%);
 }
 
+/* Force visibility for case study content after animation */
+.case-study-visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
 .dark {
   --sh-class: #4c97f8;
   --sh-identifier: white;
@@ -364,7 +370,7 @@ body {
 
 /* Xanh Mono font utility classes */
 .font-xanh-mono {
-  font-family: 'Xanh Mono', monospace;
+  font-family: 'Xanh Mono', monospace !important;
 }
 
 /* VT323 font utility classes */
@@ -597,6 +603,14 @@ a {
 a:hover {
   color: var(--text);
   text-decoration: underline;
+}
+
+/* Override underline for portfolio card links */
+.grid a:hover,
+.grid a,
+.columns-1 a:hover,
+.columns-1 a {
+  text-decoration: none !important;
 }
 
 section {
