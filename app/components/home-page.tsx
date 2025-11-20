@@ -41,22 +41,22 @@ const services = [
   {
     number: '01',
     title: 'Brand Identity',
-    description: 'Visual systems that breathe life into your story'
+    description: 'Visual identity systems that act as a representation of your brand'
   },
   {
     number: '02',
     title: 'Digital Products',
-    description: 'Interfaces that feel human and work beautifully'
+    description: 'Interfaces that feel human and work beautifully on any device'
   },
   {
     number: '03',
     title: 'Web Design & Development',
-    description: 'Sites built with care, precision, and soul'
+    description: 'Websites crafted and built with care, precision, and soul'
   },
   {
     number: '04',
     title: 'Art Direction',
-    description: 'Creative vision that guides every detail'
+    description: 'Creative vision that guides every detail of your project'
   }
 ]
 
