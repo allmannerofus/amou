@@ -63,6 +63,28 @@ export function SimpleContent({ content }: SimpleContentProps) {
         return <br key={index} />
       }
 
+      // Handle images ![alt](src)
+      const imageMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)/)
+      if (imageMatch) {
+        if (inList && listItems.length > 0) {
+          elements.push(<ul key={`list-${index}`} className="mb-4 pl-6 text-gray-700 dark:text-gray-300">{listItems}</ul>)
+          listItems = []
+          inList = false
+        }
+        const [, alt, src] = imageMatch
+        // Use regular img tag for public folder images (Next.js Image requires width/height or fill)
+        return (
+          <div key={index} className="my-8">
+            <img 
+              src={src} 
+              alt={alt || ''} 
+              className="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+        )
+      }
+
       // Handle regular paragraphs
       if (inList && listItems.length > 0) {
         elements.push(<ul key={`list-${index}`} className="mb-4 pl-6 text-gray-700 dark:text-gray-300">{listItems}</ul>)

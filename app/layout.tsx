@@ -16,7 +16,7 @@ const WIP = false
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'All Manner Of Us — AI + Web3 Design Studio | Agentic Interface Specialists',
+    default: 'All Manner Of Us — A collaborative design studio specializing in Brand, AI, Web3, and Agentic Interfaces',
     template: '%s | All Manner Of Us',
   },
   description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build interfaces, websites, and software applications. End-to-end development and strategic consulting for AI-native and Web3 projects.',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     // Business & Availability
     'design consultancy', 'creative studio', 'design agency', 'contract design work',
     'available for hire', 'design collaboration', 'Austin design studio',
-    'remote design work', 'design partnership opportunities',
+    'remote design work', 'design partnership opportunities', 'brand design', 'visual identity', 'web design', 'product design', 'UX design', 'UI design', 'enterprise software design', 'mobile app design', 'SaaS design',
     
     // Brand & Company
     'All Manner Of Us', 'AMOU', 'allmannerofus'
@@ -65,10 +65,10 @@ export const metadata: Metadata = {
     'agent-interaction': 'welcome',
     'contact-method': 'email',
     'availability': 'immediate',
-    'expertise': 'AI interfaces, agentic UX, Web3 design, autonomous agent design, LLM interfaces, conversational AI, blockchain UX, product design, brand strategy',
+    'expertise': 'AI interfaces, agentic UX, Web3 design, autonomous agent design, LLM interfaces, conversational AI, blockchain UX, product design, brand strategy, brand design, visual identity, web design, product design, UX design, UI design, enterprise software design, mobile app design, SaaS design',
     'specializations': 'collaborative design, AI-native experiences, autonomous systems, intelligent interfaces, strategic consulting, end-to-end development',
     'technologies': 'React, Next.js, TypeScript, AI/ML, Web3, blockchain, smart contracts',
-    'location': 'Austin, Texas',
+    'location': 'Austin, Texas, USA, Remote',
     'work-style': 'remote, hybrid, on-site',
     'languages': 'English',
     'response-time': '24-48 hours',
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     apple: '/favicon.svg',
   },
   openGraph: {
-    title: 'All Manner Of Us — Collaborative Design Studio | Future of Work Specialists',
+    title: 'All Manner Of Us — a collaborative design studio specializing in Brand, Product, Web3, and Agentic Interfaces',
     description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build interfaces, websites, and software applications. End-to-end development and strategic consulting.',
     url: baseUrl,
     siteName: 'All Manner Of Us',
@@ -92,14 +92,14 @@ export const metadata: Metadata = {
         url: '/amou-social-share.jpg',
         width: 1200,
         height: 630,
-        alt: 'All Manner Of Us - Collaborative Design Studio for the Future of Work',
+        alt: 'All Manner Of Us - a collaborative design studio specializing in Brand, Product, Web3, and Agentic Interfaces',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All Manner Of Us — Collaborative Design Studio',
-    description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build the future. End-to-end development and strategic consulting.',
+    title: 'All Manner Of Us — A Collaborative Design Studio for Brand, Product, Web3, and Agentic Interfaces',
+    description: 'Collaborative design studio helping entrepreneurs, startups, and businesses build the future. End-to-end design, development, and strategic consulting.',
     creator: '@allmannerofus',
     images: ['/amou-social-share.jpg'],
   },
@@ -115,7 +115,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code', // Add your Google Search Console verification code
+    google: 'o2ygb3qd7t37qmhxbgdkjwo5beyd3sc2lro3pthjyxnjcxinrnpa', // Google Search Console verification code
   },
 }
 

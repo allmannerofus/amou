@@ -4,9 +4,9 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
     <channel>
-        <title>Zvpply</title>
+        <title>All Manner Of Us</title>
         <link>${baseUrl}</link>
-        <description>Zvpply RSS feed</description>
+        <description>All Manner Of Us RSS feed</description>
     </channel>
   </rss>`
 

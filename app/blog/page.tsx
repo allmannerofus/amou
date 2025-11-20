@@ -7,9 +7,16 @@ export const metadata: Metadata = {
   title: 'Blog',
   description: 'Thoughts on design, AI, Web3, and building products that matter.',
   alternates: {
+    canonical: `${baseUrl}/blog`,
     types: {
       'application/rss+xml': `${baseUrl}/feed`,
     },
+  },
+  openGraph: {
+    title: 'Blog — All Manner Of Us',
+    description: 'Thoughts on design, AI, Web3, and building products that matter.',
+    url: `${baseUrl}/blog`,
+    type: 'website',
   },
 }
 

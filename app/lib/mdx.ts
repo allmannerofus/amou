@@ -7,11 +7,12 @@ const contentDirectory = path.join(process.cwd(), 'app/content')
 
 export interface PostMeta {
   title: string
-  date: string
+  date?: string
   description?: string
   tags?: string[]
   image?: string
   published?: boolean
+  client?: string
 }
 
 export interface Post {
@@ -47,6 +48,7 @@ export function getPostBySlug(slug: string, type: 'blog' | 'case-studies'): Post
         tags: data.tags || [],
         image: data.image || '',
         published: data.published ?? true, // default to true if not specified
+        client: data.client || '',
       },
       content,
     }
@@ -61,7 +63,15 @@ export function getAllPosts(type: 'blog' | 'case-studies'): Post[] {
   const posts = slugs
     .map((slug) => getPostBySlug(slug, type))
     .filter((post): post is Post => post !== null && (post.meta.published ?? true))
-    .sort((post1, post2) => (post1.meta.date > post2.meta.date ? -1 : 1))
+    .sort((post1, post2) => {
+      // For case studies, don't sort by date
+      if (type === 'case-studies') return 0
+      // For blog posts, sort by date
+      if (post1.meta.date && post2.meta.date) {
+        return post1.meta.date > post2.meta.date ? -1 : 1
+      }
+      return 0
+    })
   
   return posts
 }

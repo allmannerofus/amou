@@ -5,6 +5,7 @@ import { ShareButtons } from 'app/components/share-buttons'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { baseUrl } from 'app/sitemap'
+import Script from 'next/script'
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -29,21 +30,38 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
   }
 
+  const url = `${baseUrl}/blog/${slug}`
+  const ogImage = post.meta.image 
+    ? (post.meta.image.startsWith('http') ? post.meta.image : `${baseUrl}${post.meta.image.startsWith('/') ? '' : '/'}${post.meta.image}`)
+    : `${baseUrl}/amou-social-share.jpg`
+
   return {
     title: post.meta.title,
     description: post.meta.description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title: post.meta.title,
       description: post.meta.description,
-      url: `${baseUrl}/blog/${slug}`,
+      url,
       type: 'article',
       publishedTime: post.meta.date,
       tags: post.meta.tags,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.meta.title,
+        }
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.meta.title,
       description: post.meta.description,
+      images: [ogImage],
     },
   }
 }
@@ -57,9 +75,49 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const postUrl = `${baseUrl}/blog/${slug}`
+  const ogImage = post.meta.image 
+    ? (post.meta.image.startsWith('http') ? post.meta.image : `${baseUrl}${post.meta.image.startsWith('/') ? '' : '/'}${post.meta.image}`)
+    : `${baseUrl}/amou-social-share.jpg`
+
+  // Build structured data for blog post
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.meta.title,
+    "description": post.meta.description || '',
+    "url": postUrl,
+    "datePublished": post.meta.date,
+    "dateModified": post.meta.date,
+    "image": ogImage,
+    "author": {
+      "@type": "Organization",
+      "name": "All Manner Of Us",
+      "url": baseUrl
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "All Manner Of Us",
+      "url": baseUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/amou-social-share.jpg`
+      }
+    },
+    ...(post.meta.tags && post.meta.tags.length > 0 && {
+      "keywords": post.meta.tags.join(", ")
+    })
+  }
 
   return (
-    <article className="max-w-4xl mx-auto">
+    <>
+      <Script
+        id={`structured-data-${slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData)
+        }}
+      />
+      <article className="max-w-4xl mx-auto">
       <header className="mb-8">
         <Link 
           href="/blog" 
@@ -105,6 +163,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         description={post.meta.description}
         tags={post.meta.tags}
       />
-    </article>
+      </article>
+    </>
   )
 } 
