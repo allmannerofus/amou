@@ -270,8 +270,8 @@ export function HomePage() {
             <h2 className="font-instrument-serif text-[48px] md:text-[96px] leading-[48px] md:leading-[96px] uppercase" style={{ color: whatWeDoText }}>
               What We Do
             </h2>
-            <p className="font-xanh-mono text-[18px] md:text-[24px] leading-[1.5] max-w-[662px]" style={{ color: whatWeDoText }}>
-              We dream up, design, and ship interfaces, websites, and software applications that connect with your audience and empower them to move.
+            <p className="font-xanh-mono text-[20px] md:text-[24px] leading-[1.5] max-w-[662px]" style={{ color: whatWeDoText }}>
+              We dream up, design, and ship brands, websites, and software applications that connect with your audience and empower them to move.
             </p>
           </div>
           
