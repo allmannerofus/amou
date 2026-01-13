@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev -p 7177",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@fontsource/dm-mono": "^5.2.6",
@@ -11,26 +12,33 @@
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/postcss": "4.0.0-alpha.13",
     "@types/node": "20.11.17",
-    "@types/react": "18.2.55",
-    "@types/react-dom": "18.2.19",
+    "@types/react": "^19.2.3",
+    "@types/react-dom": "^19.2.3",
     "@vercel/analytics": "^1.1.3",
     "@vercel/speed-insights": "^1.0.9",
     "date-fns": "^4.1.0",
     "geist": "1.2.2",
     "gray-matter": "^4.0.3",
-    "next": "canary",
+    "next": "16.1.1",
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.4.6",
     "postcss": "^8.4.35",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "sugar-high": "^0.6.0",
     "tailwindcss": "4.0.0-alpha.13",
     "typescript": "5.3.3"
   },
   "pnpm": {
     "overrides": {
-      "js-yaml": "3.14.2"
+      "js-yaml": "4.1.1"
+    },
+    "patchedDependencies": {
+      "gray-matter": "patches/gray-matter.patch"
     }
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.1",
+    "postinstall-postinstall": "^2.1.0"
   }
 }

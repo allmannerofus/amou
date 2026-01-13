@@ -1,3 +1,5 @@
+import React from 'react'
+
 interface SimpleContentProps {
   content: string
 }
@@ -6,9 +8,9 @@ export function SimpleContent({ content }: SimpleContentProps) {
   // Enhanced markdown-like rendering
   const renderContent = (text: string) => {
     const lines = text.split('\n')
-    const elements: JSX.Element[] = []
+    const elements: React.JSX.Element[] = []
     let inList = false
-    let listItems: JSX.Element[] = []
+    let listItems: React.JSX.Element[] = []
 
     const processLine = (line: string, index: number) => {
       // Handle headers
@@ -113,7 +115,7 @@ export function SimpleContent({ content }: SimpleContentProps) {
 
   // Process inline markdown like **bold**, *italic*, and [links](url)
   const processInlineMarkdown = (text: string) => {
-    const parts: (string | JSX.Element)[] = []
+    const parts: (string | React.JSX.Element)[] = []
     let currentText = ''
     let i = 0
 

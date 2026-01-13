@@ -255,7 +255,7 @@ export function PortfolioCarousel() {
   const containerRef = useRef<HTMLDivElement>(null)
   const topRowRef = useRef<HTMLDivElement>(null)
   const bottomRowRef = useRef<HTMLDivElement>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | undefined>(undefined)
 
   // Create randomized rows with no duplicate images between rows
   const createRowImages = useCallback(() => {
