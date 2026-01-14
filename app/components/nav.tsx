@@ -41,7 +41,7 @@ export function Navbar() {
         <nav className="flex items-center justify-between pt-[20px] pb-0 px-8 md:px-20 border-b border-transparent relative z-50">
           <Link 
             href="/" 
-            className="no-underline hover:no-underline active:no-underline focus:no-underline focus:outline-none"
+            className="no-underline hover:no-underline active:no-underline focus:no-underline focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 rounded-sm"
           >
             <WordmarkLogo className="h-[20px] md:h-[18px] lg:h-[24px] w-auto" />
           </Link>
@@ -76,7 +76,7 @@ export function Navbar() {
         {/* Left - Brand Name */}
         <Link 
           href="/" 
-          className="relative z-50 no-underline hover:no-underline active:no-underline focus:no-underline focus:outline-none"
+          className="relative z-50 no-underline hover:no-underline active:no-underline focus:no-underline focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 rounded-sm"
           style={{ pointerEvents: 'auto' }}
         >
           <WordmarkLogo className="h-[21.6px] md:h-[18px] lg:h-[24px] w-auto" />
@@ -121,19 +121,20 @@ export function Navbar() {
           
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-1 w-10 h-10 flex items-center justify-center relative"
+            className="md:hidden p-1 w-10 h-10 flex items-center justify-center relative focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 rounded-sm"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+            aria-expanded={isMobileMenuOpen}
             style={{ color: 'var(--text)' }}
           >
-            <svg className="w-8 h-8 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ 
+            <svg className="w-8 h-8 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" style={{ 
               opacity: isMobileMenuOpen ? 0 : 1,
               transform: isMobileMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)',
               transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'
             }}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <svg className="w-8 h-8 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ 
+            <svg className="w-8 h-8 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" style={{ 
               opacity: isMobileMenuOpen ? 1 : 0,
               transform: isMobileMenuOpen ? 'rotate(0deg)' : 'rotate(-90deg)',
               transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'

@@ -179,7 +179,10 @@ export function CaseStudyContent({ content }: CaseStudyContentProps) {
                         controls
                         className="w-full h-full"
                         style={{ objectFit: 'contain' }}
-                      />
+                        aria-label="Project video"
+                      >
+                        <track kind="captions" />
+                      </video>
                     )}
                   </div>
                 )
@@ -213,7 +216,10 @@ export function CaseStudyContent({ content }: CaseStudyContentProps) {
                             controls
                             className="w-full h-full"
                             style={{ objectFit: 'contain' }}
-                          />
+                            aria-label="Project video"
+                          >
+                            <track kind="captions" />
+                          </video>
                         )}
                       </div>
                       {nextItem.type === 'video' && (
@@ -242,7 +248,10 @@ export function CaseStudyContent({ content }: CaseStudyContentProps) {
                               controls
                               className="w-full h-full"
                               style={{ objectFit: 'contain' }}
-                            />
+                              aria-label="Project video"
+                            >
+                              <track kind="captions" />
+                            </video>
                           )}
                         </div>
                       )}
@@ -278,7 +287,10 @@ export function CaseStudyContent({ content }: CaseStudyContentProps) {
                             controls
                             className="w-full h-full"
                             style={{ objectFit: 'contain' }}
-                          />
+                            aria-label="Project video"
+                          >
+                            <track kind="captions" />
+                          </video>
                         )}
                       </div>
                     </div>

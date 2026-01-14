@@ -397,7 +397,7 @@ export function PortfolioOrganic({ featuredOnly = false, limit }: PortfolioOrgan
         {item.caseStudyUrl ? (
           <Link 
             href={item.caseStudyUrl}
-            className="block cursor-pointer no-underline hover:no-underline"
+            className="block cursor-pointer no-underline hover:no-underline focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 rounded-sm"
             style={{ textDecoration: 'none' }}
           >
             {cardContent}

@@ -249,7 +249,7 @@ export function HomePage() {
         <div className="mt-[60px] md:mt-[80px]">
           <Link
             href="/portfolio"
-            className="flex items-center justify-center h-[34px] px-[15px] py-[5px] font-vt323 text-base md:text-lg uppercase leading-[1.5] transition-colors w-full gradient-border-button"
+            className="flex items-center justify-center min-h-[44px] px-[15px] py-[10px] font-vt323 text-base md:text-lg uppercase leading-[1.5] transition-colors w-full gradient-border-button focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 rounded-sm"
           >
             View more work
           </Link>

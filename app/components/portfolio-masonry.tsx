@@ -167,7 +167,7 @@ export function PortfolioMasonry() {
               item.caseStudyUrl.startsWith('/') ? (
                 <Link
                   href={item.caseStudyUrl}
-                  className="block cursor-pointer no-underline hover:no-underline"
+                  className="block cursor-pointer no-underline hover:no-underline focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 rounded-sm"
                   style={{ textDecoration: 'none' }}
                 >
                   <CardContent />
@@ -177,7 +177,7 @@ export function PortfolioMasonry() {
                   href={item.caseStudyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block cursor-pointer no-underline hover:no-underline"
+                  className="block cursor-pointer no-underline hover:no-underline focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 rounded-sm"
                   style={{ textDecoration: 'none' }}
                 >
                   <CardContent />

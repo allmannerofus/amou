@@ -28,7 +28,7 @@ export function CaseStudyNavigation({ previous, next }: CaseStudyNavigationProps
           <Link 
             href={`/case-studies/${previous.slug}`}
             prefetch={true}
-            className="group relative flex flex-col gap-4 p-6 md:p-8 rounded-lg transition-all hover:opacity-90 overflow-hidden"
+            className="group relative flex flex-col gap-4 p-6 md:p-8 rounded-lg transition-all hover:opacity-90 overflow-hidden focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2"
             style={{ 
               backgroundColor: 'var(--background)',
             }}
@@ -56,6 +56,7 @@ export function CaseStudyNavigation({ previous, next }: CaseStudyNavigationProps
                   xmlns="http://www.w3.org/2000/svg"
                   className="transform group-hover:-translate-x-1 transition-transform"
                   style={{ color: 'var(--text-tertiary)' }}
+                  aria-hidden="true"
                 >
                   <path 
                     d="M10 12L6 8L10 4" 
@@ -83,7 +84,7 @@ export function CaseStudyNavigation({ previous, next }: CaseStudyNavigationProps
           <Link 
             href={`/case-studies/${next.slug}`}
             prefetch={true}
-            className="group relative flex flex-col gap-4 p-6 md:p-8 rounded-lg transition-all hover:opacity-90 md:text-right overflow-hidden"
+            className="group relative flex flex-col gap-4 p-6 md:p-8 rounded-lg transition-all hover:opacity-90 md:text-right overflow-hidden focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2"
             style={{ 
               backgroundColor: 'var(--background)',
             }}
@@ -112,6 +113,7 @@ export function CaseStudyNavigation({ previous, next }: CaseStudyNavigationProps
                   xmlns="http://www.w3.org/2000/svg"
                   className="transform group-hover:translate-x-1 transition-transform"
                   style={{ color: 'var(--text-tertiary)' }}
+                  aria-hidden="true"
                 >
                   <path 
                     d="M6 12L10 8L6 4" 
